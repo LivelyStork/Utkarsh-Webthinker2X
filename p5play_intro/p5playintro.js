@@ -16,7 +16,9 @@ function setup() {
   //  ellipse(50,50,100,100)
   //  rect(100,100,100,200)
   ball = new Sprite();
-  ball.x = 100
+  ball.x = 100;
+  ball.y = 200
+  ball.diameter = 40
 }
 
 function draw() {
