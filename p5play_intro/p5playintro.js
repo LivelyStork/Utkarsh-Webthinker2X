@@ -10,11 +10,11 @@ function setup() {
 
    // Create a bouncing ball sprite
    // write your codes here
-   fill("skyblue")
-   stroke("pink")
-   strokeWeight(10)
-   ellipse(50,50,100,100)
-   rect(100,100,100,200)
+  //  fill("skyblue")
+  //  stroke("pink")
+  //  strokeWeight(10)
+  //  ellipse(50,50,100,100)
+  //  rect(100,100,100,200)
 }
 
 function draw() {
