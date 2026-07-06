@@ -10,7 +10,7 @@ function setup() {
 
    // Create a bouncing ball sprite
    // write your codes here
-   FileList()
+   fill
    rect(0,0,100,300)
 }
 
