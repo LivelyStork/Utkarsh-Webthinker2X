@@ -31,5 +31,5 @@ function setup() {
 
 function draw() {
   // write your codes here
-  
+  fill(0)
 }
