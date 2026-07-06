@@ -13,7 +13,8 @@ function setup() {
    fill("skyblue")
    stroke("pink")
    strokeWeight(10)
-   rect(0,0,100,300)
+   
+   rect(10,10,100,300)
 }
 
 function draw() {
