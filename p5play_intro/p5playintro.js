@@ -20,6 +20,7 @@ function setup() {
   ball.y = 200
   ball.diameter = 40
   ball.color = 'blue';
+  
 }
 
 function draw() {
