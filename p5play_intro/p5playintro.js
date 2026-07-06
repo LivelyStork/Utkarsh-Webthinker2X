@@ -12,7 +12,7 @@ function setup() {
    // write your codes here
    fill("skyblue")
    stroke("pink")
-   strokewidth(10)
+   strokeweih(10)
    rect(0,0,100,300)
 }
 
