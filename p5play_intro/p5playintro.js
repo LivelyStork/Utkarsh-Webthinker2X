@@ -13,7 +13,7 @@ function setup() {
    fill("skyblue")
    stroke("pink")
    strokeWeight(10)
-   ellipse(0,0,50,50)
+   ellipse(0,100,100,100)
    rect(100,100,100,200)
 }
 
