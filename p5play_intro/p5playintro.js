@@ -10,7 +10,7 @@ function setup() {
 
    // Create a bouncing ball sprite
    // write your codes here
-   fill(255,20,50)
+   fill(blue)
    rect(0,0,100,300)
 }
 
