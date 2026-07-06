@@ -22,8 +22,10 @@ function setup() {
   ball.color = 'blue';
 
   box = new Sprite();
-  box.x = 100
-  box.y = 100
+  box.x = 100;
+  box.y = 100;
+  box.w = 50
+  boc
 }
 
 function draw() {
