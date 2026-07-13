@@ -7,9 +7,13 @@ function setup() {
   let base = 10;
   let height = 5;
   let area = 0.5*base*height;
+  let sum = 0
   text(area,200,200);
 
-  i=2; i<=20, i += 2
+  for(i=2; i<=20, i += 2;){
+    sum += i;
+  }
+  text(sum,300,300)
 }
 
 function draw() {
