@@ -33,7 +33,7 @@ function setup() {
   groceries.push("butter")
   groceries.shift()
   groceries.splice(1,1,"kaya")
-  text()
+  text(groceries,200,200)
 }
 
 function draw() {
