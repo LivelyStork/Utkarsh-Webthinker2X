@@ -23,6 +23,7 @@ function setup() {
   // } else{
   //   text("You are a secondary student", 200,200)
   // }
+  let 
 }
 
 function draw() {
