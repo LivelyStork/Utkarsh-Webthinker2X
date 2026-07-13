@@ -15,7 +15,9 @@ function setup() {
   // }
   // text(sum,300,300)
 
-  
+  if(age <= 9){
+    
+  }
 }
 
 function draw() {
