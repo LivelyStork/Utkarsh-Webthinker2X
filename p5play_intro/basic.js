@@ -9,7 +9,7 @@ function setup() {
   let area = 0.5*base*height;
   text(area,200,200);
 
-  i=2; i<=20
+  i=2; i<=20, i += 2
 }
 
 function draw() {
