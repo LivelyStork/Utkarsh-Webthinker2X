@@ -23,9 +23,9 @@ function setup() {
   // } else{
   //   text("You are a secondary student", 200,200)
   // }
-  let count = 0
+  let count = 19
   while(count<=5){
-    
+
   }
 }
 
