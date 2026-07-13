@@ -10,7 +10,7 @@ function setup() {
   let sum = 0
   text(area,200,200);
 
-  for(i=2; i<=20, i += 2;){
+  for(i = 2; i<=20, i += 2;){
     sum += i;
   }
   text(sum,300,300)
