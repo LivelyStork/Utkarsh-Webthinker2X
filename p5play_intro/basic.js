@@ -35,7 +35,7 @@ function setup() {
   groceries.splice(1,1,"kaya")
   // text(groceries,200,200)
   for (let i = 0; i < groceries.length; i++) {
-    text(groceries[i], 40 + i * 100, yodd + 70);
+    text(groceries[i], 40 + i * 100, yOdd + 70);
   }
 }
 
