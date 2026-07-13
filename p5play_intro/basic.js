@@ -20,7 +20,7 @@ function setup() {
   } else if(age <= 12){
     text("You are a upper primary student")
   } else{
-    
+    text"
   }
 }
 
