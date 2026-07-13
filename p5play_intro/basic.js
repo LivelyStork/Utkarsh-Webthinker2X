@@ -1,4 +1,5 @@
-let 
+let base = 20
+let height
 function setup() {
   // write your codes here
   new Canvas(600,400);
