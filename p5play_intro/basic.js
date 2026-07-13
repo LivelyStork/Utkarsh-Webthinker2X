@@ -3,7 +3,7 @@ let height = 10
 function setup() {
   // write your codes here
   new Canvas(600,400);
-  back
+  background(white)
   console.log("Hello");
 }
 
