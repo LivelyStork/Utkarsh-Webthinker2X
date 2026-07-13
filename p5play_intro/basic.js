@@ -29,10 +29,10 @@ function setup() {
   //   count -= 2
   // }
   let groceries = ["apple", "bread", "milk"];
-  groceries.push(orange)
-  groceries.push(butter)
+  groceries.push("orange")
+  groceries.push(butter")
   groceries.shift()
-  groceries.splice
+  groceries.splice(1,1,"kaya")
 }
 
 function draw() {
