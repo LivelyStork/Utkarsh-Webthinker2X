@@ -23,7 +23,10 @@ function setup() {
   // } else{
   //   text("You are a secondary student", 200,200)
   // }
-  let 
+  let count = 0
+  while(count<=5){
+    
+  }
 }
 
 function draw() {
