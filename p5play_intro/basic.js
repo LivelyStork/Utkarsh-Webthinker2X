@@ -1,12 +1,15 @@
-let base = 10
-let height = 5
-let area = 0.5*base*height
+
+
 function setup() {
   // write your codes here
   new Canvas(600,400);
-  background(250)
+  background(250);
   console.log("Hello");
-  text(area,200,200)
+
+  let base = 10;
+  let height = 5;
+  let area = 0.5*base*height;
+  text(area,200,200);
 }
 
 function draw() {
