@@ -25,7 +25,7 @@ function setup() {
   // }
   let count = 19
   while(count>=1){
-    text(count,200,200)
+    text(count,200,200-count*5)
     count -= 2
   }
 }
