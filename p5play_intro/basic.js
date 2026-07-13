@@ -1,8 +1,9 @@
 let base = 20
-let height = 
+let height = 10
 function setup() {
   // write your codes here
   new Canvas(600,400);
+  back
   console.log("Hello");
 }
 
