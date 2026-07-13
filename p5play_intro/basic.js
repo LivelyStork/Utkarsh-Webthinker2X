@@ -29,6 +29,7 @@ function setup() {
   //   count -= 2
   // }
   let groceries = ["apple", "bread", "milk"];
+  gro
 }
 
 function draw() {
