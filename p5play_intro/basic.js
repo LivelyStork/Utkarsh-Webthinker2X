@@ -1,9 +1,11 @@
 function setup() {
   // write your codes here
-  function setup() {
-    new 
+  new Canvas(600,400);
   }
 
+function draw() {
+
+}
   // --- Exercise: Area of Triangle ---
   // write your codes here
 
@@ -18,5 +20,5 @@ function setup() {
 
   // --- Exercise: Array operations (groceries) ---
   // write your codes here
-}
+
 
