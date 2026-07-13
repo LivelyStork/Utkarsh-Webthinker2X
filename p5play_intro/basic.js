@@ -14,7 +14,7 @@ function setup() {
   //   sum += i;
   // }
   // text(sum,300,300)
-  let age = 10
+  let age = 16
 
   if(age <= 9){
     text("You are a lower primary student",200,200)
