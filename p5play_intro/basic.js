@@ -1,6 +1,6 @@
 let base = 10
 let height = 5
-let area = 0.5*10*5
+let area = 0.5*base*height
 function setup() {
   // write your codes here
   new Canvas(600,400);
