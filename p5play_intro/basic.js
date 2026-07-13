@@ -23,11 +23,11 @@ function setup() {
   // } else{
   //   text("You are a secondary student", 200,200)
   // }
-  let count = 19
-  while(count>=1){
-    text(count,200,200-count*5)
-    count -= 2
-  }
+  // let count = 19
+  // while(count>=1){
+  //   text(count,200,200-count*7)
+  //   count -= 2
+  
 }
 
 function draw() {
