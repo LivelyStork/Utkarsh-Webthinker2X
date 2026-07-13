@@ -17,6 +17,8 @@ function setup() {
 
   if(age <= 9){
     text("You are a lower primary student")
+  } else if(age <= 12){
+    
   }
 }
 
