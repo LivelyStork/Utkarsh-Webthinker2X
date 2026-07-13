@@ -17,9 +17,9 @@ function setup() {
   let age = 10
 
   if(age <= 9){
-    text("You are a lower primary student")
+    text("You are a lower primary student",200,200)
   } else if(age <= 12){
-    text("You are a upper primary student")
+    text("You are a upper primary student",200,200)
   } else{
     text("You are a secondary student", 200,200)
   }
