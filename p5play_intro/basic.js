@@ -8,6 +8,8 @@ function setup() {
   let height = 5;
   let area = 0.5*base*height;
   text(area,200,200);
+
+  i=2; 
 }
 
 function draw() {
