@@ -14,15 +14,15 @@ function setup() {
   //   sum += i;
   // }
   // text(sum,300,300)
-  let age = 16
+  // let age = 16
 
-  if(age <= 9){
-    text("You are a lower primary student",200,200)
-  } else if(age <= 12){
-    text("You are a upper primary student",200,200)
-  } else{
-    text("You are a secondary student", 200,200)
-  }
+  // if(age <= 9){
+  //   text("You are a lower primary student",200,200)
+  // } else if(age <= 12){
+  //   text("You are a upper primary student",200,200)
+  // } else{
+  //   text("You are a secondary student", 200,200)
+  // }
 }
 
 function draw() {
