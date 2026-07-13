@@ -16,7 +16,7 @@ function setup() {
   // text(sum,300,300)
 
   if(age <= 9){
-    text()
+    text("You are a lower primary student")
   }
 }
 
