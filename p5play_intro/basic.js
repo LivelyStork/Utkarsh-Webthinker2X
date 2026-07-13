@@ -1,7 +1,7 @@
 function setup() {
   // write your codes here
   new Canvas(600,400);
-  console.log("")
+  console.log("Hello");
 }
 
 function draw() {
