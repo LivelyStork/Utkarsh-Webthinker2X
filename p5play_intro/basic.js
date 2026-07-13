@@ -27,7 +27,8 @@ function setup() {
   // while(count>=1){
   //   text(count,200,200-count*7)
   //   count -= 2
-  
+  // }
+  let groceries = ["apple", "bread", "milk"];
 }
 
 function draw() {
