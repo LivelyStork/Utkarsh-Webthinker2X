@@ -1,7 +1,7 @@
 function setup() {
   // write your codes here
   function setup() {
-    
+    CanvasCaptureMediaStreamTrack()
   }
 
   // --- Exercise: Area of Triangle ---
