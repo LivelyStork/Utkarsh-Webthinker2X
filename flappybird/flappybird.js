@@ -9,7 +9,7 @@ function preload() {
     base = loadImage('assets/base.png');
 }
 
-// function setup () {
+// function setup() {
     // new Canvas (400, 600);
     // Bird Sprite
     // bird = new Sprite();
