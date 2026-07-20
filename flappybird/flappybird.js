@@ -18,7 +18,7 @@ function setup() {
     bird.width = 30;
     bird.height = 30;
     bird.img = flapMidImg; // defined earlier in preload()
-    bird = new Sprite(width / 2, 200, 30, 30, 'dynamic');
+    // bird = new Sprite(width / 2, 200, 30, 30, 'dynamic');
     bird.collider = "dynamic";
     bird.mass = 2; // heavier = stronger pull from gravity
     bird.drag = 0.02 // air resistance
