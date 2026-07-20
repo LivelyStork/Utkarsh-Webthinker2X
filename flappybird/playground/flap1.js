@@ -20,7 +20,7 @@ function setup () {
     bird.img = flapMidImg; // defined earlier in preload()
     // bird = new Sprite(width / 2, 200, 30, 30, 'dynamic');
     bird.collider = "dynamic";
-    bird.mass = 2;
+    bird.mass = 2; // heavier 
     bird.drag = 0.02
     bird.bounciness = 0.5
     world.gravity.y = 10;
