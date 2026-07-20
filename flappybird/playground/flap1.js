@@ -21,7 +21,7 @@ function setup () {
     // bird = new Sprite(width / 2, 200, 30, 30, 'dynamic');
     bird.collider = "dynamic";
     bird.mass = 2; // heavier = stronger pull from gravity
-    bird.drag = 0.02
+    bird.drag = 0.02 // air resistance
     bird.bounciness = 0.5
     world.gravity.y = 10;
 }
