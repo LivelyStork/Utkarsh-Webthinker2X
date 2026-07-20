@@ -9,7 +9,7 @@ function preload() {
     base = loadImage('assets/base.png');
 }
 
-function setup () {
+// function setup () {
     // new Canvas (400, 600);
     // Bird Sprite
     // bird = new Sprite();
@@ -31,7 +31,7 @@ function setup () {
     // floor.height = 125;
     // loor.collider = "static";
     // floor.img = base;
-}
+// }
 // function draw() {
 //     image(bg, 0, 0, width, height); // Draw the background
 //     // Apply upward push when space is pressed
