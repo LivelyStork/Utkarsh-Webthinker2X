@@ -23,14 +23,14 @@ function setup () {
     // bird.mass = 2; // heavier = stronger pull from gravity
     // bird.drag = 0.02 // air resistance
     // bird.bounciness = 0.5 // how much it bounces when hitting the floor
-    world.gravity.y = 10;
-    floor = new Sprite();
-    floor.x = 200;
-    floor.y = height - 20;
-    floor.width = 400;
-    floor.height = 125;
-    loor.collider = "static";
-    floor.img = base;
+    // world.gravity.y = 10;
+    // floor = new Sprite();
+    // floor.x = 200;
+    // floor.y = height - 20;
+    // floor.width = 400;
+    // floor.height = 125;
+    // loor.collider = "static";
+    // floor.img = base;
 }
 // function draw() {
 //     image(bg, 0, 0, width, height); // Draw the background
