@@ -19,10 +19,10 @@ function setup () {
     // bird.height = 30;
     // bird.img = flapMidImg; // defined earlier in preload()
     // bird = new Sprite(width / 2, 200, 30, 30, 'dynamic');
-    bird.collider = "dynamic";
-    bird.mass = 2; // heavier = stronger pull from gravity
-    bird.drag = 0.02 // air resistance
-    bird.bounciness = 0.5 // how much it bounces when hitting the floor
+    // bird.collider = "dynamic";
+    // bird.mass = 2; // heavier = stronger pull from gravity
+    // bird.drag = 0.02 // air resistance
+    // bird.bounciness = 0.5 // how much it bounces when hitting the floor
     world.gravity.y = 10;
     floor = new Sprite();
     floor.x = 200;
