@@ -34,4 +34,9 @@ function setup () {
 }
 function draw() {
     image(bg, 0, 0, width, height); // Draw the background
+    // Apply upward push when space is pressed
+    if (kb.presses('space')) {
+        bird.vel.y = -15; // which direction do you think this is?
+        bird.sleeping = false; // wake up if sleeping
+    }
 }
