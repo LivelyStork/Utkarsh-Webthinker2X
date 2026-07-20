@@ -22,7 +22,7 @@ function setup () {
     bird.collider = "dynamic";
     bird.mass = 2; // heavier = stronger pull from gravity
     bird.drag = 0.02 // air resistance
-    bird.bounciness = 0.5
+    bird.bounciness = 0.5 // how much it bounces 
     world.gravity.y = 10;
 }
 function draw() {
