@@ -20,6 +20,7 @@ function setup () {
     bird.img = flapMidImg; // defined earlier in preload()
     // bird = new Sprite(width / 2, 200, 30, 30, 'dynamic');
     bird.collider = "dynamic";
+    bird.mass = 2;
 }
 function draw() {
     image(bg, 0, 0, width, height); // Draw the background
