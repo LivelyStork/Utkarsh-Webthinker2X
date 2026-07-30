@@ -57,10 +57,10 @@ function draw() {
         bird.vel.y = -4;
         bird.sleeping = false;
     }
-    if ( mouse.presses() ) {
-        let s = new Sprite(mouseX, mouseY, 35);
-        s.collider = "dynamic";
-    }
+    // if ( mouse.presses() ) {
+    //     let s = new Sprite(mouseX, mouseY, 35);
+    //     s.collider = "dynamic";
+    // }
     if (bird.vel.y < -1) {
         // heading up
         bird.img = flapUpImg;
