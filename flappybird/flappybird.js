@@ -81,6 +81,6 @@ function draw() {
         let midY = height/2;
         bottomPipe = new Sprite(400, someY, 52, 320, 'static');
         bottomPipe.img = pipe;
-        pipeG
+        pipeGroup.add
     }
 }
