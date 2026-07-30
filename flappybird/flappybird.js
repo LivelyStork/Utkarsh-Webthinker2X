@@ -72,7 +72,10 @@ function draw() {
         bird.img = flapMidImg;
         bird.rotation = 0;
     }
+    if (frameCount === 1) {
+        spawnPipePair();
+    }
     function spawnPipePair() {
-        
+
     }
 }
