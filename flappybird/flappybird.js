@@ -55,7 +55,7 @@ function draw() {
         let s = new Sprite(mouseX, mouseY, 35);
         s.collider = "dynamic";
     }
-    if (bird.vel.y < -10) {
+    if (bird.vel.y < -1) {
         // heading up
         bird.img = flapUpImg;
         bird.rotation = -30;
