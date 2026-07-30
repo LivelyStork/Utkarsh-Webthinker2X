@@ -40,7 +40,7 @@ function draw() {
     // test if bg is okay
     image(bg, 0, 0, width, height); // draw the background
     fill("blue");
-    textSize()
+    textSize(14);
     // Floor to bounce bird
     if(kb.presses("space")){
         bird.vel.y = -4;
