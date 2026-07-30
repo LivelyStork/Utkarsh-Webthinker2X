@@ -77,3 +77,17 @@ function draw() {
         spawnPipePair();
     }
 }
+function spawnPipePair() {
+        let gap = 50
+        let midY = height/2;
+        let someY = midY + gap/2 + 200;
+        bottomPipe = new Sprite(400, someY, 52, 320, 'static');
+        bottomPipe.img = pipe;
+        pipeGroup.add(bottomPipe);
+        pipeGroup.layer = 0;
+        topPipe = new Sprite(400, someY, 52, 320, 'static');
+        screenTopPipe.img = pipe;
+        topPipe.rotation = 180
+        pipeGroup.add(topPipe);
+        pipeGroup.layer = 0;
+    }
