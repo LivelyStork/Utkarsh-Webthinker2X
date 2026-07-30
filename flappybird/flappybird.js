@@ -19,6 +19,7 @@ function setup() {
     bird.width = 30;
     bird.height = 30;
     bird.img = flapMidImg;
+    bird.drag = 0.02
 
     bird.collider = "dynamic";
     bird.bounciness = 0.5; // stop here slide 19 lesson 4
