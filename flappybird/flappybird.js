@@ -1,6 +1,7 @@
 // the final game
 let bird, floor;
 let flapMidImg, bg, base;
+let flapUpImg
 
 function preload() {
     // bird image, background, and the floor
