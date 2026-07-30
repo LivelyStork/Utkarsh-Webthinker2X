@@ -23,10 +23,13 @@ function setup() {
     bird.collider = "dynamic";
     bird.bounciness = 0.5; // stop here slide 19 lesson 4
 
-    let floor = new Sprite();
+    floor = new Sprite();
+    floor.x = 200;
+    floor.y = height - 20;
     floor.width = 400;
-    floor.y = 500;
+    floor.height = 125;
     floor.collider = "static";
+    floor.img = base;
 
     world.gravity.y = 10; // gravity pulls the sprite
 }
