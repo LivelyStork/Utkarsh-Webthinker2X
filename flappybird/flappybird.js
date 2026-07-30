@@ -56,17 +56,17 @@ function draw() {
         s.collider = "dynamic";
     }
     if (bird.vel.y < -10) {
-    // heading up
-    bird.img = flapUpImg;
-    bird.rotation = -30;
+        // heading up
+        bird.img = flapUpImg;
+        bird.rotation = -30;
     }
     else if (bird.vel.y > 1) {
-    // heading down
-    bird.img = flapDownImg;
-    bird.rotation = 30;
+        // heading down
+        bird.img = flapDownImg;
+        bird.rotation = 30;
     }
     else {
-    bird.img = flapMidImg;
-    bird.rotation = 0;
+        bird.img = flapMidImg;
+        bird.rotation = 0;
     }
 }
