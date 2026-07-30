@@ -3,6 +3,7 @@ let bird, floor;
 let flapMidImg, bg, base;
 let flapUpImg, flapDownImg
 let pipeGroup
+let pipe;
 let 
 
 function preload() {
