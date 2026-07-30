@@ -55,4 +55,18 @@ function draw() {
         let s = new Sprite(mouseX, mouseY, 35);
         s.collider = "dynamic";
     }
+    if (bird.vel.y < -10) {
+    // heading up
+    bird.img = flapUpImg;
+    bird.rotation = -30;
+    }
+    else if (bird.vel.y > 1) {
+    // heading down
+    bird.img = flapDownImg;
+    bird.rotation = 30;
+    }
+    else {
+    bird.img = flapMidImg;
+    bird.rotation = 0;
+    }
 }
