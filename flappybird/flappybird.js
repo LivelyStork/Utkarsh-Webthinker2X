@@ -34,4 +34,12 @@ function setup() {
 function draw() {
     // test if bg is okay
     image(bg, 0, 0, width, height); // draw the background
+    / Floor to bounce bird
+    floor = new Sprite();
+    floor.x = 200;
+    floor.y = height - 20;
+    floor.width = 400;
+    floor.height = 125;
+    floor.collider = "static";
+    floor.img = base;
 }
