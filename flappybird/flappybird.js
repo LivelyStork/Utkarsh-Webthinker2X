@@ -29,12 +29,6 @@ function setup() {
     floor.collider = "static";
 
     world.gravity.y = 10; // gravity pulls the sprite
-}
-
-function draw() {
-    // test if bg is okay
-    image(bg, 0, 0, width, height); // draw the background
-    // Floor to bounce bird
     floor = new Sprite();
     floor.x = 200;
     floor.y = height - 20;
@@ -42,4 +36,10 @@ function draw() {
     floor.height = 125;
     floor.collider = "static";
     floor.img = base;
+}
+
+function draw() {
+    // test if bg is okay
+    image(bg, 0, 0, width, height); // draw the background
+    // Floor to bounce bird
 }
