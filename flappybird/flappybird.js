@@ -1,8 +1,8 @@
 // the final game
 let bird, floor;
 let flapMidImg, bg, base;
-let flapUpImg, flapDownImg
-let pipeGroup
+let flapUpImg, flapDownImg;
+let pipeGroup;
 let pipe;
 let bottomPipe, topPipe;
 
