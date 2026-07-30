@@ -41,7 +41,7 @@ function setup() {
     floor.img = base;
 
     world.gravity.y = 10; // gravity pulls the sprite
-    let pipeGroup = new Group();
+    pipeGroup = new Group();
 }
 
 function draw() {
