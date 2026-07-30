@@ -42,6 +42,6 @@ function draw() {
     // Floor to bounce bird
     if(kb.presses("space")){
         bird.vel.y = -7;
-        bird.
+        bird.sleeping = false
     }
 }
