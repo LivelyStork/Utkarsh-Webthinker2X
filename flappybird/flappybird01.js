@@ -29,7 +29,7 @@ function setup() {
     floor.y = height - 20;
     floor.width = 400;
     floor.height = 125;
-    loor.collider = "static";
+    floor.collider = "static";
     floor.img = base;
 }
 // function draw() {
