@@ -48,6 +48,7 @@ function draw() {
     textSize(14);
     text("bird.sleeping: " + bird.sleeping ,20,40)
     text("bird.vel.y" + round(bird.vel.y), 20, 60);
+    
     // Floor to bounce bird
     if(kb.presses("space")){
         bird.vel.y = -4;
