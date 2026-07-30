@@ -29,13 +29,6 @@ function setup() {
     floor.collider = "static";
 
     world.gravity.y = 10; // gravity pulls the sprite
-    floor = new Sprite();
-    floor.x = 200;
-    floor.y = height - 20;
-    floor.width = 400;
-    floor.height = 125;
-    floor.collider = "static";
-    floor.img = base;
 }
 
 function draw() {
