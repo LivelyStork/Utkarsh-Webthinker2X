@@ -44,9 +44,9 @@ function draw() {
         bird.vel.y = -4;
         bird.sleeping = false;
 
-        if ( mouse.presses() ) {
-let s = new Sprite(mouseX, mousey, 35);
-s.collider = "dynamic";
-}
+    if ( mouse.presses() ) {
+        let s = new Sprite(mouseX, mousey, 35);
+        s.collider = "dynamic";
+    }
     }
 }
