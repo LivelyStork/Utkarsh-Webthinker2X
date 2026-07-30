@@ -35,7 +35,7 @@ function draw() {
     // test if bg is okay
     image(bg, 0, 0, width, height); // draw the background
     // Floor to bounce bird
-    floor = new Sprite();
+    let floor = new Sprite();
     floor.x = 200;
     floor.y = height - 20;
     floor.width = 400;
