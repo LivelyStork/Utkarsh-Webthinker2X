@@ -80,6 +80,7 @@ function draw() {
         let gap = 50
         let midY = height/2;
         bottomPipe = new Sprite(400, someY, 52, 320, 'static')
-        bottomPipe = 
+        bottomPipe.img = pipe;
+        
     }
 }
