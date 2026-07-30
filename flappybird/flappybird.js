@@ -41,7 +41,7 @@ function draw() {
     image(bg, 0, 0, width, height); // draw the background
     fill("blue");
     textSize(14);
-    bird.sleeping = ("bird.sleeping: ")
+    bird.sleeping = ("bird.sleeping: " + bird.sleeping)
     // Floor to bounce bird
     if(kb.presses("space")){
         bird.vel.y = -4;
