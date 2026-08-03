@@ -56,6 +56,10 @@ function setup() {
 function draw() {
     // test if bg is okay
     image(bg, 0, 0, width, height); // draw the background
+    if (kb.presses('space') || mouse.presses()){
+        startGame = true;
+        startScreenLabel.visible = false;
+    }
     fill("blue");
     textSize(14);
     text("bird.sleeping: " + bird.sleeping ,20,40)
