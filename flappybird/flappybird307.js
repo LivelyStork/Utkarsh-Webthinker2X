@@ -94,6 +94,10 @@ function draw() {
         }
     }
     if (bird.collides(pipeGroup) || bird.collides(floor)){
+        gameoverLabel = new Sprite (width/2, height/2, 192, 42);
+    gameoverLabel.img = gameoverImg;
+    gameoverLabel.layer = 100; // make the game over text come to front
+    gameoverLabel.x = camera.x;
         noLoop();
     }
 }
