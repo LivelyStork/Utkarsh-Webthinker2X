@@ -105,5 +105,5 @@ function spawnPipePair() {
         pipeGroup.add(topPipe);
         pipeGroup.layer = 0;
         toppipe = new Sprite(bird.x + 400, midy - gap / 2 - 200, 52, 320, 'static');
-        
+        bottomPipe = new Sprite(bird.x + 400, midy + gap / 2 + 200, 52, 320, 'static');
     }
