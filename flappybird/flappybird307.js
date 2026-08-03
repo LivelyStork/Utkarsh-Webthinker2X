@@ -78,6 +78,7 @@ function draw() {
     if (frameCount === 1) {
         spawnPipePair();
     }
+    
 }
 function spawnPipePair() {
         let gap = 50
