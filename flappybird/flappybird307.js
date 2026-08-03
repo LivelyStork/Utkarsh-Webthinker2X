@@ -93,7 +93,7 @@ function draw() {
 }
 function spawnPipePair() {
         let gap = 50
-        let midY = random(250, height - 250)
+        let midY = random(350, height - 350)
         let someY = midY + gap/2 + 200;
         bottomPipe = new Sprite(400, someY, 52, 320, 'static');
         bottomPipe.img = pipe;
