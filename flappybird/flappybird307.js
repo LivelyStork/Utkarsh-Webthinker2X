@@ -36,7 +36,7 @@ function setup() {
     bird.drag = 0.02
     bird.mass = 2
 
-    bird.collider = "dynamic";
+    bird.collider = "static";
     bird.bounciness = 0.5; // stop here slide 19 lesson 4
 
     floor = new Sprite();
@@ -59,6 +59,7 @@ function draw() {
     if (kb.presses('space') || mouse.presses()){
         startGame = true;
         startScreenLabel.visible = false;
+        bird
     }
     if (startGame){
     fill("blue");
