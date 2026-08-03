@@ -85,10 +85,11 @@ function draw() {
         spawnPipePair(); // spawn pipes every 1.5 seconds
         // remove off screen pipes
     }
-    for (let pipe of pipeGroup)
+    for (let pipe of pipeGroup){
         if (pipe.x < -50){ 
             pipe.remove();
         }
+    }
 }
 function spawnPipePair() {
         let gap = 50
