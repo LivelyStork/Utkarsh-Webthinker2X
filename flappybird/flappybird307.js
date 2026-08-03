@@ -9,6 +9,7 @@ let gameoverImg; // declare variable for image
 let gameoverLabel; // declare variable for game over sprite
 let startScreenLabel; // declare variable for start screen 
 let startScreenImg; // declare variable for image
+let startGame = false
 
 function preload() {
     // bird image, background, and the floor
