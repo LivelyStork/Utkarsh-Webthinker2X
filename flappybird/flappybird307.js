@@ -60,6 +60,7 @@ function draw() {
         startGame = true;
         startScreenLabel.visible = false;
     }
+    if (startGame){
     fill("blue");
     textSize(14);
     text("bird.sleeping: " + bird.sleeping ,20,40)
@@ -110,6 +111,7 @@ function draw() {
         gameoverLabel.x = camera.x;
         noLoop();
     }
+}
 }
 function spawnPipePair() {
         let gap = 50
