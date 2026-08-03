@@ -80,7 +80,7 @@ function draw() {
     }
     bird.x += 3
     camera.x = bird.x
-    
+    floor.x = bird.x
 }
 function spawnPipePair() {
         let gap = 50
