@@ -119,10 +119,9 @@ function spawnPipePair() {
         let someY = midY + gap/2 + 200;
         pipeGroup.add(bottomPipe);
         // pipeGroup.layer = 0;
-        topPipe = new Sprite(400, height - someY, 52, 320, 'static');
         pipeGroup.add(topPipe);
         pipeGroup.layer = 0;
-        toppipe = new Sprite(bird.x + 400, midY - gap / 2 - 200, 52, 320, 'static');
+        topPipe = new Sprite(bird.x + 400, midY - gap / 2 - 200, 52, 320, 'static');
         bottomPipe = new Sprite(bird.x + 400, midY + gap / 2 + 200, 52, 320, 'static');
         bottomPipe.img = pipe;
         topPipe.img = pipe;
