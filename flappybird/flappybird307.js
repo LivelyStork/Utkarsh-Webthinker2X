@@ -5,7 +5,8 @@ let flapUpImg, flapDownImg;
 let pipeGroup;
 let pipe;
 let bottomPipe, topPipe;
-let gameoverImg; // declare variable for image let gameoverLabel; // declare variable for game over sprite
+let gameoverImg; // declare variable for image 
+let gameoverLabel; // declare variable for game over sprite
 
 function preload() {
     // bird image, background, and the floor
