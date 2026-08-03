@@ -81,6 +81,14 @@ function draw() {
     bird.x += 3
     camera.x = bird.x
     floor.x = bird.x
+    if (frameCount % 90 === 0){
+        spawnPipePair(); // spawn pipes every 1.5 seconds
+        // remove off screen pipes
+    }
+    for (let pipe of pipeGroup)
+        if (pipe.x < -50){ 
+            pipe.remove();
+        }
 }
 function spawnPipePair() {
         let gap = 50
