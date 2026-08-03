@@ -48,6 +48,8 @@ function setup() {
 
     world.gravity.y = 10; // gravity pulls the sprite
     pipeGroup = new Group();
+    startScreenLabel = new Sprite(width/2, height/2, 50, 50, 'none');
+startScreenLabel.img = startScreenImg;
 }
 
 function draw() {
