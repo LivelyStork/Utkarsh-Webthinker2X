@@ -145,7 +145,7 @@ function drawscore(x, y, score, digitWidth, digitHeight) {
     // make it a string so we can get each digit individually rather than a value
     let scoreStr = str(score);
     // total width taken up by all digits
-    let totalWidth = scoreStr.length * digitwidth;
+    let totalWidth = scoreStr.length * digitWidth;
     // starting x coordinates
     let startX = x - totalWidth / 2;
     // loop through each digit
