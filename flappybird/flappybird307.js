@@ -139,7 +139,7 @@ function spawnPipePair() {
     topPipe.rotation = 180
 }
 
-function drawscore(x, y, score, digitwidth, digitheight) {
+function drawscore(x, y, score, digitWidth, digitHeight) {
     // Clear old digit sprites
     scoreDigits. removeAll ();
     // make it a string so we can get each digit individually rather than a value
