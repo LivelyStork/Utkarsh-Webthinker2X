@@ -128,9 +128,11 @@ function draw() {
         let pipeRightEdge = pipe.x + pipe.w / 2;
         // center pos - half bird width = left edge pos
         let birdLeftEdge = bird.x - bird.w / 2;
-        // compare x-coordinates of player and pipes if (pipe.passed == false && pipeRightEdge ‹ birdLeftEdge){
-        pipe.passed = true;
-        score++;
+        //compare x-coordinates of player and pipes 
+        if (pipe.passed == false && pipeRightEdge < birdLeftEdge){
+            pipe.passed = true;
+            score++;
+        }
     }
 }
 drawscore(width/2, 20, score, 24, 36)
