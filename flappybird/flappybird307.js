@@ -148,4 +148,15 @@ function drawscore(x, y, score, digitwidth, digitheight) {
     let totalWidth = scoreStr.length * digitwidth;
     // starting x coordinates
     let startX = x - totalWidth / 2;
+    // loop through each digit
+    for (let i = 0; iscorestr. length; i++) {
+        // gets number digit from the score string (e.g. "4" or "2")
+        let digit = int(scorestr[i]);
+        // x-position of this digit, next character will move to right..
+        let xPos = start + i * digitwidth;
+        // create a sprite the size of the digit image
+        let digitSprite = new scoreDigits.Sprite(xPos, y, digitWidth, digitHeight);
+        //get the digit image from the array based on placement order which corresponds to the digit
+        digitSprite.img = numberImages[digit];
+    }
 }
