@@ -126,7 +126,7 @@ function draw() {
 }
 }
 function spawnPipePair() {
-        let gap = random(35,60)
+    let gap = random(35,60)
         let midY = random(350, height - 350)
         topPipe = new Sprite(bird.x + 400, midY - gap / 2 - 200, 52, 320, 'static');
         bottomPipe = new Sprite(bird.x + 400, midY + gap / 2 + 200, 52, 320, 'static');
@@ -137,7 +137,7 @@ function spawnPipePair() {
         bottomPipe.img = pipe;
         topPipe.img = pipe;
         topPipe.rotation = 180
-    }
+}
 
 function drawscore(x, y, score, digitwidth, digitheight) {
     // Clear old digit sprites
