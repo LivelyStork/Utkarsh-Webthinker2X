@@ -143,4 +143,9 @@ function drawscore(x, y, score, digitwidth, digitheight) {
     // Clear old digit sprites
     scoreDigits. removeAll ();
     // make it a string so we can get each digit individually rather than a value
+    let scoreStr = str(score);
+    // total width taken up by all digits
+    let totalWidth = scoreStr.length * digitwidth;
+    // starting x coordinates
+let startX = x - totalWidth / 2;
 }
