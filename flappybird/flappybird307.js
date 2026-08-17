@@ -122,11 +122,20 @@ function draw() {
         gameoverLabel.x = camera.x;
         noLoop();
     }
-    drawscore(width/2, 20, score, 24, 36)
-    // call function to keep score centered on camera 
-    moveGroup(scoreDigits, camera.x, 24);
-
+    // increase score if pipe passed
+    for (let pipe of pipeGroup) {
+    // center pos + half pipe width = right edge pos
+    let pipeRightEdge = pipe.x + pipe.w / 2;
+    // center pos - half bird width = left edge pos
+    let birdleftEdge = bird.x - bird.w / 2;
+    // compare x-coordinates of player and pipes if (pipe.passed == false && pipeRightEdge ‹ birdLeftEdge){
+    pipe.passed = true;
+    score++;
+    }
 }
+drawscore(width/2, 20, score, 24, 36)
+// call function to keep score centered on camera 
+moveGroup(scoreDigits, camera.x, 24);
 }
 function spawnPipePair() {
     let gap = random(35,60)
