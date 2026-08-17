@@ -123,6 +123,7 @@ function draw() {
         noLoop();
     }
     drawscore(width/2, 20, score, 24, 36)
+    
 }
 }
 function spawnPipePair() {
