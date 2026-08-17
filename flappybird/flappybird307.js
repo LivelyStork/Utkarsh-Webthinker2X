@@ -133,10 +133,10 @@ function spawnPipePair() {
         pipeGroup.add(bottomPipe);
         // pipeGroup.layer = 0;
         pipeGroup.add(topPipe);
-        pipeGroup.layer = 0;
-        bottomPipe.img = pipe;
-        topPipe.img = pipe;
-        topPipe.rotation = 180
+    pipeGroup.layer = 0;
+    bottomPipe.img = pipe;
+    topPipe.img = pipe;
+    topPipe.rotation = 180
 }
 
 function drawscore(x, y, score, digitwidth, digitheight) {
