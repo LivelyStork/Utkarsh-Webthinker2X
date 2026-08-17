@@ -123,8 +123,8 @@ function draw() {
         noLoop();
     }
     drawscore(width/2, 20, score, 24, 36)
-    
-}
+    // call function to keep score centered on camera 
+    moveGroup (scoreDigits, camera.x, 24);
 }
 function spawnPipePair() {
     let gap = random(35,60)
@@ -159,5 +159,17 @@ function drawscore(x, y, score, digitWidth, digitHeight) {
         let digitSprite = new scoreDigits.Sprite(xPos, y, digitWidth, digitHeight);
         //get the digit image from the array based on placement order which corresponds to the digit
         digitSprite.img = numberImages[digit];
+    }
+}
+
+function moveGroup (group, target, spacing) {}
+    // E.g. 3 digits → 2 gaps → (3 - 1) * 24 = 48px
+    let totalwidth = (group.length -1) * spacing;
+    // Find Left-most X Position
+    // Shifts the starting point left, so the entire group becomes centered
+    let startx = (target - totalwidth/2);
+    // Place Each Sprite in the Group 
+    for (let i = 0; i < group.length; i++) {
+        group[i].x = startX + i * spacing;
     }
 }
