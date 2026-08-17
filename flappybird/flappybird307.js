@@ -149,7 +149,7 @@ function drawscore(x, y, score, digitwidth, digitheight) {
     // starting x coordinates
     let startX = x - totalWidth / 2;
     // loop through each digit
-    for (let i = 0; iscorestr. length; i++) {
+    for (let i = 0; i<scorestr. length; i++) {
         // gets number digit from the score string (e.g. "4" or "2")
         let digit = int(scorestr[i]);
         // x-position of this digit, next character will move to right..
