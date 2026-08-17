@@ -122,6 +122,7 @@ function draw() {
         gameoverLabel.x = camera.x;
         noLoop();
     }
+    drawscore(width/2, 20, score, 24, 36)
 }
 }
 function spawnPipePair() {
