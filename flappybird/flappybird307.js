@@ -13,6 +13,8 @@ let startGame = false;
 let score = 0;
 let scoreDigits;
 let numberImages = [];
+// sound assets
+let flapSound, pointSound, failSound;
 
 
 function preload() {
