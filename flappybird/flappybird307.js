@@ -153,7 +153,7 @@ function drawscore(x, y, score, digitwidth, digitheight) {
         // gets number digit from the score string (e.g. "4" or "2")
         let digit = int(scoreStr[i]);
         // x-position of this digit, next character will move to right..
-        let xPos = start + i * digitwidth;
+        let xPos = startX + i * digitwidth;
         // create a sprite the size of the digit image
         let digitSprite = new scoreDigits.Sprite(xPos, y, digitWidth, digitHeight);
         //get the digit image from the array based on placement order which corresponds to the digit
