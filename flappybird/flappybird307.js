@@ -179,7 +179,7 @@ function moveGroup (group, targetX, spacing) {
     let totalwidth = (group.length -1) * spacing;
     // Find Left-most X Position
     // Shifts the starting point left, so the entire group becomes centered
-    let startX = (target - totalwidth/2);
+    let startX = (targetX - totalwidth/2);
     // Place Each Sprite in the Group 
     for (let i = 0; i < group.length; i++) {
         group[i].x = startX + i * spacing;
