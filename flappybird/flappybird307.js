@@ -78,10 +78,10 @@ function draw() {
         text("bird.vel.y" + round(bird.vel.y), 20, 60);
         text("frameCount = " + frameCount, 20,80)
         // Floor to bounce bird
-    if(kb.presses("space")){
-        bird.vel.y = -4;
-        bird.sleeping = false;
-    }
+        if(kb.presses("space")){
+            bird.vel.y = -4;
+            bird.sleeping = false;
+        }
     // if ( mouse.presses() ) {
     //     let s = new Sprite(mouseX, mouseY, 35);
     //     s.collider = "dynamic";
