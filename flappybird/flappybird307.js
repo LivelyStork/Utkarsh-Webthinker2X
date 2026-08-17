@@ -11,7 +11,7 @@ let startScreenLabel; // declare variable for start screen
 let startScreenImg; // declare variable for image
 let startGame = false;
 let score = 0;
-let score
+let scoreDigits = 
 
 
 function preload() {
