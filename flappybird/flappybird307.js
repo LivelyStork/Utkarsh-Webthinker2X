@@ -127,7 +127,7 @@ function draw() {
         gameoverLabel.img = gameoverImg;
         gameoverLabel.layer = 100; // make the game over text come to front
         gameoverLabel.x = camera.x;
-        
+        failSound.play();
         noLoop();
     }
     // increase score if pipe passed
