@@ -125,7 +125,8 @@ function draw() {
     drawscore(width/2, 20, score, 24, 36)
     // call function to keep score centered on camera 
     moveGroup(scoreDigits, camera.x, 24);
-    
+
+}
 }
 function spawnPipePair() {
     let gap = random(35,60)
@@ -140,7 +141,7 @@ function spawnPipePair() {
     topPipe.img = pipe;
     topPipe.rotation = 180
 }
-}
+
 
 function drawscore(x, y, score, digitWidth, digitHeight) {
     // Clear old digit sprites
