@@ -76,6 +76,7 @@ function draw() {
         startGame = true;
         startScreenLabel.visible = false;
         bird.collider = "dynamic";
+        flapSound.play();
     }
     if (startGame){
         fill("blue");
