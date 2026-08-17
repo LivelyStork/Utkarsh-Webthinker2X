@@ -140,10 +140,7 @@ function spawnPipePair() {
     }
 
 function drawscore(x, y, score, digitwidth, digitheight) {
-
     // Clear old digit sprites
-
     scoreDigits. removeAll ();
-
     // make it a string so we can get each digit individually rather than a value
 }
