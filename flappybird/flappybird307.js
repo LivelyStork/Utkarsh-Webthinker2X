@@ -159,5 +159,5 @@ function drawscore(x, y, score, digitWidth, digitHeight) {
         //get the digit image from the array based on placement order which corresponds to the digit
         digitSprite.img = numberImages[digit];
     }
-    camera.x = 
+    camera.x = digitSprite.x
 }
