@@ -12,7 +12,7 @@ let startScreenImg; // declare variable for image
 let startGame = false;
 let score = 0;
 let scoreDigits;
-let numberImages
+let numberImages = []
 
 
 function preload() {
