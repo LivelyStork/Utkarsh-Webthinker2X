@@ -132,7 +132,6 @@ function draw() {
         // Use setTimeout to wait 3 seconds before restarting the game
         setTimeout(() => {
             score = 0; // reset score to e
-            startGame = false; // set game state to "not started"
             pipeGroup.removeAll(); // remove all pipes
             bird.vel.x = 0; // stop horizontal movement
             bird.vel.y = 0; // stop falling
@@ -143,6 +142,7 @@ function draw() {
             startScreenLabel.visible = true; // show the "start game" image again
             startScreenLabel.x = bird.x;
             startScreenLabel.y = height / 2 - 50;
+            startGame = false; // set game state to "not started"
             loop(); // resume the game loop
         }, 3000); // run after 3000ms (3 seconds)
     }
