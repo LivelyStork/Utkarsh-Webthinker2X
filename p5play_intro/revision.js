@@ -5,7 +5,7 @@ function setup () {
     floor1.collider = 'static'
     let floor2 = new Sprite(0, 0, 40, 1200)
     floor2.collider = 'static'
-    let floor3 = new Sprite(0, 0, 40, 1200)
+    let floor3 = new Sprite(600, 300, 40, 1200)
 }
 function preload(){
     //assets
