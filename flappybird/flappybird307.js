@@ -129,6 +129,22 @@ function draw() {
         gameoverLabel.x = camera.x;
         failSound.play();
         noLoop();
+        // Use setTimeout to wait 3 seconds before restarting the game
+    setTimeout(() => {
+    score = 0; // reset score to e
+    startGame = false; // set game state to "not started"
+    pipeGroup.removeAll(); // remove all pipes
+    bird.vel.x = 0; // stop horizontal movement
+    bird.vel.y = 0; // stop falling
+    bird.rotation = 0; // reset angle to upright
+    bird.collider = 'static'; // freeze bird again
+    bird.y = 200; // reset bird to starting height
+    gameOverLabel.remove(); // remove "game over" label from screen
+    startScreenLabel.visible = true; // show the "start game" image again
+    startScreenLabel.x = bird.x;
+    startScreenLabel.y = height / 2 - 50;
+    loop(); // resume the game loop
+}, 3000); // run after 3000ms (3 seconds)
     }
     // increase score if pipe passed
     for (let pipe of pipeGroup) {
