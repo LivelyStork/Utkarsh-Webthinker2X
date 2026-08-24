@@ -2,6 +2,7 @@ function setup () {
     createCanvas (600,600)
     world.gravity.y = 10;
     let floor = new Sprite(width/2, height, 600, 40)
+    floor.collider = 
 }
 function preload(){
     //assets
