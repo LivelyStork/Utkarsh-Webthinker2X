@@ -1,6 +1,7 @@
 function setup () {
     createCanvas (600,600)
     world.gravity.y = 10;
+    let floor = new Sprite(wi)
 }
 function preload(){
     //assets
