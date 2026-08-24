@@ -10,7 +10,7 @@ function preload(){
 function draw() {
 //animations 
 //physics
-ba
+background(220)
     if(mouse.presses ()){
         let cube = new Sprite(mouseX, mouseY, 50,50)
     }
