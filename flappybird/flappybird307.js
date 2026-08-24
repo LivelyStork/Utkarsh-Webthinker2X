@@ -130,7 +130,6 @@ function draw() {
         failSound.play();
         noLoop();
         // Use setTimeout to wait 3 seconds before restarting the game
-        if not kb.presses("space")||mouse.presses()
         setTimeout(() => {
             score = 0; // reset score to e
             startGame = false; // set game state to "not started"
