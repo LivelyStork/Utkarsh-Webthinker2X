@@ -142,9 +142,10 @@ function draw() {
             startScreenLabel.visible = true; // show the "start game" image again
             startScreenLabel.x = bird.x;
             startScreenLabel.y = height / 2 - 50;
-            startGame = false; // set game state to "not started"
+            
             loop(); // resume the game loop
         }, 3000); // run after 3000ms (3 seconds)
+        startGame = false; // set game state to "not started"
     }
     // increase score if pipe passed
     for (let pipe of pipeGroup) {
