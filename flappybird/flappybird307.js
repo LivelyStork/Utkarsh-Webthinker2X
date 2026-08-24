@@ -139,7 +139,7 @@ function draw() {
             bird.rotation = 0; // reset angle to upright
             bird.collider = 'static'; // freeze bird again
             bird.y = 200; // reset bird to starting height
-            gameOverLabel.remove(); // remove "game over" label from screen
+            gameoverLabel.remove(); // remove "game over" label from screen
             startScreenLabel.visible = true; // show the "start game" image again
             startScreenLabel.x = bird.x;
             startScreenLabel.y = height / 2 - 50;
