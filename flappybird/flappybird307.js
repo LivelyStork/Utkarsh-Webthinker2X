@@ -144,7 +144,7 @@ function draw() {
     startScreenLabel.x = bird.x;
     startScreenLabel.y = height / 2 - 50;
     loop(); // resume the game loop
-}, 3000); // run after 3000ms (3 seconds)
+    }, 3000); // run after 3000ms (3 seconds)
     }
     // increase score if pipe passed
     for (let pipe of pipeGroup) {
