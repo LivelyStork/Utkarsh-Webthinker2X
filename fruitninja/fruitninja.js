@@ -5,7 +5,7 @@ function preload(){
 }
 
 function setup (){
-    new Canvas (800, 600) ;
+    new Canvas (800, 600);
     world.gravity.y = 10; // set gravity for the world
 }
 function draw(){
