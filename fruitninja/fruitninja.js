@@ -15,6 +15,7 @@ function preload(){
 
     // store the fruit objects into an array
     fruitTypes = [peach, watermelon];
+    fruitGroup = new Group(); // new group for fruits
 }
 
 
