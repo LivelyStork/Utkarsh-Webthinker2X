@@ -31,8 +31,8 @@ function draw(){
 }
 
 // spawnFruit function
-function spawnFruit () {V
-    let fruitData = random (fruitTypes); // pick one at random
+function spawnFruit () {
+    let fruitData = random(fruitTypes); // pick one at random
     let random = random(300, 500); // random X to spawn. Rem that canvas width is 800
     let fruit = new fruitGroup.Sprite(randomX, height+20, 40); // spawn at bottom
     fruit.image = fruitData.whole; // load the image for whole
