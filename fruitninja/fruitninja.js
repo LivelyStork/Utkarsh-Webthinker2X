@@ -10,4 +10,5 @@ function setup (){
 }
 function draw(){
     clear(); // optional to clear before applying an image. image (dojoBG, 0, 0, width, height);
+    image (dojoB, 0, 0, width, height);
 }
