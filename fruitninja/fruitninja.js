@@ -27,7 +27,7 @@ function draw(){
     image (dojoBG, 0, 0, width, height);
     // call spawnFruit function
     if (frameCount % 120 === 0){
-        spawnFruit ();
+        spawnFruit();
     }
 }
 
@@ -35,10 +35,13 @@ function draw(){
 function spawnFruit () {
     let fruitData = random(fruitTypes); // pick one at random
     let randomX = random(300, 500); // random X to spawn. Rem that canvas width is 800
+
     let fruit = new fruitGroup.Sprite(randomX, height+20, 40); // spawn at bottom
+    
     fruit.image = fruitData.whole; // load the image for whole
     fruit.type = fruitData; // store reference to its type i.e. peach or watermelon
     fruit.vel.y = random(-10, -14); // shoot upward at random velocity. Adjust to try!
     fruit.vel.x = random(-2, 2); // sideways curve. Adjust to try!
     fruit.friction = 0; // no friction
 }
+
