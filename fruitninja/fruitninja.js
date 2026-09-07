@@ -38,6 +38,6 @@ function spawnFruit () {
     fruit.image = fruitData.whole; // load the image for whole
     fruit.type = fruitData; // store reference to its type i.e. peach or watermelon
     fruit.vel.y = random(-10, -14); // shoot upward at random velocity. Adjust to try!
-    fruit. vel.x = random(-2, 2); // sideways curve. Adjust to try!
+    fruit.vel.x = random(-2, 2); // sideways curve. Adjust to try!
     fruit.friction = 0; // no friction
 }
