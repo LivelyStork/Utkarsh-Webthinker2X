@@ -1,10 +1,21 @@
 let dojoBG; // image for the background
+let fruitTypes = []; // store fruit image objects
 
 function preload(){
     dojoBG =loadImage('assets/dojobackground.png');
-    
+    // declare the peach object
+    let peach = {
+        whole: loadImage('assets/peachwhole.png')
+    };
+    // declare the watermelon object
+    let watermelon = {
+        whole: loadImage(' assets/watermelonwhole.png')
+    }
 
+    // store the fruit objects into an array
+    fruitTypes = [peach, watermelon];
 }
+
 
 function setup (){
     new Canvas (800, 600);
