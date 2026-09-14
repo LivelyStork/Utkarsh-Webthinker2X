@@ -6,11 +6,15 @@ function preload(){
     dojoBG =loadImage('assets/dojobackground.png');
     // declare the peach object
     let peach = {
-        whole: loadImage('assets/peachwhole.png')
+        whole: loadImage('assets/peachwhole.png'),
+        half1: loadImage('assets/peachhalf.png'),
+        half2: loadImage('assets/peachhalf.png'),
     };
     // declare the watermelon object
     let watermelon = {
-        whole: loadImage(' assets/watermelonwhole.png')
+        whole: loadImage(' assets/watermelonwhole.png'),
+        half1: loadImage('assets/watermelonhalf.png'),
+        half2: loadImage('assets/watermelonhalf.png'),
     }
 
     // store the fruit objects into an array
