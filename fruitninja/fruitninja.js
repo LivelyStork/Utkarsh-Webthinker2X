@@ -69,7 +69,7 @@ function splitFruit (x, y, fruitData) {
     left.vel.x = -3; // veer left
     left.vel.y = random(-5, -2);
     left.rotationSpeed = -5;
-    left.life = 1000; // remove after 30 frames
+    left.life = 360; // remove after 30 frames
     
     // Create right half
     let right = new fruitHalves.Sprite(x + 10, y, 40, 40);
