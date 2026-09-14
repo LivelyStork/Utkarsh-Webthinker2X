@@ -82,7 +82,7 @@ function sliceFruit() {
 }
 
 function splitFruit (x, y, fruitData) {
-// Create left half
+    // Create left half
     let left = new fruitHalves.Sprite(x - 10, y, 40, 40);
     left.img = fruitData.half1;
     left.vel.x = -3; // veer left
