@@ -27,6 +27,7 @@ function preload(){
 function setup (){
     new Canvas (800, 600);
     world.gravity.y = 10; // set gravity for the world
+    fruitHalves = new Group(); // group for fruit halves
 }
 function draw(){
     clear(); // optional to clear before applying an image
