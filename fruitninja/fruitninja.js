@@ -60,7 +60,7 @@ function sliceFruit() {
         if (fruit.sliced){
             continue; // skip already sliced fruits
         }
-        
+    
         // calculate distance between mouse and fruit
         let d = dist(mouse.x, mouse.y, fruit.x, fruit.y);
         if (d < ((fruit.d / 2) + 5)) {
