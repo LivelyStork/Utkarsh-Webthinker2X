@@ -69,7 +69,7 @@ function splitFruit (x, y, fruitData) {
     left.vel.x = -3; // veer left
     left.vel.y = random(-5, -2);
     left.rotationSpeed = -5;
-    left.life = 30; // remove after 30 frames
+    left.life = 1000; // remove after 30 frames
     
     // Create right half
     let right = new fruitHalves.Sprite(x + 10, y, 40, 40);
@@ -77,7 +77,7 @@ function splitFruit (x, y, fruitData) {
     right.vel.x = 3; // veer right
     right.vel.y = random(-5, -2);
     right.rotationSpeed = 5;
-    right.life = 30; // remove after 30 frames  
+    right.life = 1000; // remove after 30 frames  
 }
 
 // Check if any fruit is sliced by the mouse
