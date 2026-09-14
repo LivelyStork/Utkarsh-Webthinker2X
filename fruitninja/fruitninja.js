@@ -54,3 +54,19 @@ function spawnFruit () {
     fruit.friction = 0; // no friction
 }
 
+// Check if any fruit is sliced by the mouse
+function sliceFruit() {
+    for (let fruit of fruitGroup) {
+        if (fruit.sliced){
+            continue; // skip already sliced fruits
+        }
+        
+        // calculate distance between mouse and fruit
+        let d = dist(mouse.x, mouse.y, fruit.x, fruit.y);
+        if (d < ((fruit.d / 2) + 5)) {
+            fruit.sliced = true; // prevent repeat slicing
+            fruit.remove(); // remove whole fruit
+            break; // only slice one fruit per frame
+        }
+    }
+}
