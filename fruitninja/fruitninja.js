@@ -1,6 +1,7 @@
 let dojoBG; // image for the background
 let fruitTypes = []; // store fruit image objects
 let fruitGroup; // Group for whole fruits
+let fruitHalves; // Group for fruit halves
 
 function preload(){
     dojoBG =loadImage('assets/dojobackground.png');
