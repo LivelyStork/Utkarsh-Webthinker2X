@@ -77,7 +77,7 @@ function splitFruit (x, y, fruitData) {
     right.vel.x = 3; // veer right
     right.vel.y = random(-5, -2);
     right.rotationSpeed = 5;
-    right.life = 1000; // remove after 30 frames  
+    right.life = 500; // remove after 30 frames  
 }
 
 // Check if any fruit is sliced by the mouse
