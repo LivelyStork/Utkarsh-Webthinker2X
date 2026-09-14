@@ -84,12 +84,12 @@ function sliceFruit() {
 function splitFruit (x, y, fruitData) {
 // Create left half
 let left = new fruitHalves.Sprite(x - 10, y, 40, 40);
-left.img = fruitData.half1;
-left.vel.x = -3; // veer left
-left.vel.y = random(-5, -2);
-left.rotationSpeed = -5;
-left.life = 30; // remove after 30 frames
-// Create right half
+    left.img = fruitData.half1;
+    eft.vel.x = -3; // veer left
+    left.vel.y = random(-5, -2);
+    left.rotationSpeed = -5;
+    left.life = 30; // remove after 30 frames
+    // Create right half
     let right = new fruitHalves.Sprite(x + 10, y, 40, 40);
     right.img = fruitData.half2;
     right.vel.x = 3; // veer right
