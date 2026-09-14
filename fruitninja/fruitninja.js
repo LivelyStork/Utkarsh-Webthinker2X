@@ -75,6 +75,7 @@ function sliceFruit() {
             const fx = fruit.x; // x coordinate for the sliced fruit
             const fy = fruit.y; // y coordinate for the sliced fruit
             fruit.remove(); // remove whole fruit
+            splitFruit(fx, fy, fruit.type); // spawn halves
             break; // only slice one fruit per frame
         }
     }
