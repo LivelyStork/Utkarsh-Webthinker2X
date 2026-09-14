@@ -80,7 +80,7 @@ function sliceFruit() {
         }
     }
 }
-
+// Split a fruit into two halves and animate them
 function splitFruit (x, y, fruitData) {
     // Create left half
     let left = new fruitHalves.Sprite(x - 10, y, 40, 40);
@@ -95,6 +95,5 @@ function splitFruit (x, y, fruitData) {
     right.vel.x = 3; // veer right
     right.vel.y = random(-5, -2);
     right.rotationSpeed = 5;
-    right.life = 30; // remove after 30 frames
-    // Split a fruit into two halves and animate them
+    right.life = 30; // remove after 30 frames  
 }
