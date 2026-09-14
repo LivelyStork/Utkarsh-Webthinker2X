@@ -72,6 +72,8 @@ function sliceFruit() {
         let d = dist(mouse.x, mouse.y, fruit.x, fruit.y);
         if (d < ((fruit.d / 2) + 5)) {
             fruit.sliced = true; // prevent repeat slicing
+            const fx = fruit.x; // x coordinate for the sliced fruit
+            const fy = fruit.y; // y coordinate for the sliced fruit
             fruit.remove(); // remove whole fruit
             break; // only slice one fruit per frame
         }
