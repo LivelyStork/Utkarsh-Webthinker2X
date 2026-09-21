@@ -5,6 +5,9 @@ let fruitHalves; // Group for fruit halves
 let score = 0
 let missedFruits = 0
 let gameState = "start"; // 'start', 'play', 'gameover'
+let gameStartTime = 0; // ms when play starts
+let gameTimer = 0; // seconds elapsed
+let gameDuration = 60; // length of one game
 
 function preload(){
     dojoBG =loadImage('assets/dojobackground.png');
