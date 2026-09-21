@@ -91,10 +91,10 @@ function draw(){
     
     text('Time: ' + (gameDuration - gameTimer), 400, 10);
     
-    if (gameTimer >= gameDuration) {
-        gameState = 'gameover';
-        return;
-    }
+    // if (gameTimer >= gameDuration) {
+    //     gameState = 'gameover';
+    //     return;
+    // }
 }
 
 // spawnFruit function
