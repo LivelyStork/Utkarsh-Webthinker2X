@@ -44,6 +44,10 @@ function draw(){
         trail.life = 10;
         sliceFruit();
     }
+    // Display: Score, Missed, Timer
+    stroke (158, 69, 69); // rgb colour fill (255); textSize (24);
+    textAlign (LEFT, TOP);
+    text ('Score: ' + score, 10, 10);
 }
 
 // spawnFruit function
