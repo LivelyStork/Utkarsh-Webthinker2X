@@ -47,7 +47,8 @@ function draw(){
     }
     for (let fruit of fruitGroup) {
         if (fruit.y > height + 50) {
-            fruit. remove (); missedFruits += 1;
+            fruit.remove(); 
+            missedFruits += 1;
         }
     }
     // Display: Score, Missed, Timer
