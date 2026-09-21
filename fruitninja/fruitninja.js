@@ -4,6 +4,7 @@ let fruitGroup; // Group for whole fruits
 let fruitHalves; // Group for fruit halves
 let score = 0
 let missedFruits = 0
+let gameState = 'start'; // 'start', 'play', 'gameover'
 
 function preload(){
     dojoBG =loadImage('assets/dojobackground.png');
