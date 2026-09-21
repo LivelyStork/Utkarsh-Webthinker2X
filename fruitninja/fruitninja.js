@@ -79,6 +79,21 @@ function draw(){
             missedFruits += 1;
         }
     }
+    // Game over screen
+    if (gameState === 'gameover') {
+        fill (0, 180);
+        rect (0, 0, width, height);
+        fill(255,0,0);
+        textAlign(CENTER, CENTER);
+        textSize(48);
+        text ('Game Over!', width / 2, height / 2 - 60);
+        textSize (24);
+        fill(255);
+        text ('Score: ' + score, width / 2, height / 2);
+        text ('Missed Fruits: ' + missedFruits, width / 2, height / 2 + 40);
+        text('Press SPACE or Click to Restart', width / 2, height / 2 + 80);
+        return;
+    }
     // Display: Score, Missed, Timer
     stroke (158, 69, 69); // rgb colour fill (255); textSize (24);
     fill(255)
