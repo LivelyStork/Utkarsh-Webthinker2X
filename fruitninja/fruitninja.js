@@ -87,14 +87,15 @@ function draw(){
     text("Score: " + score, 10, 10);
     text("Missed: " + missedFruits, 200, 10);
     // Timer logic: update game timer, end after 60s
-    gameTimer = floor((millis() - gameStartTime) / 1000);
     
     text('Time: ' + (gameDuration - gameTimer), 400, 10);
     
-    // if (gameTimer >= gameDuration) {
-    //     gameState = 'gameover';
-    //     return;
-    // }
+    if (gameTimer >= gameDuration) {
+        gameState = 'gameover';
+        return;
+    }
+
+    gameTimer = floor((millis() - gameStartTime) / 1000);
 }
 
 // spawnFruit function
