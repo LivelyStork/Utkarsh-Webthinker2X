@@ -73,10 +73,6 @@ function draw(){
         trail.life = 10;
         sliceFruit();
     }
-    if ((kb.presses(' ') || mouse.presses()) && (gameState === 'start')) {
-        gameStartTime = millis(); // capture time started
-        gameTimer = 0; // timer counter
-    }
     for (let fruit of fruitGroup) {
         if (fruit.y > height + 50) {
             fruit.remove();
