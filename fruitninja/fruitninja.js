@@ -88,7 +88,9 @@ function draw(){
     text("Missed: " + missedFruits, 200, 10);
     // Timer logic: update game timer, end after 60s
     gameTimer = floor((millis() - gameStartTime) / 1000);
+    
     text('Time: ' + (gameDuration - gameTimer), 400, 10);
+    
     if (gameTimer >= gameDuration) {
         gameState = 'gameover';
         return;
