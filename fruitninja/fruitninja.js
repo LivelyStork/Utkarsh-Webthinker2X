@@ -45,6 +45,11 @@ function draw(){
         trail.life = 10;
         sliceFruit();
     }
+    for (let fruit of fruitGroup) {
+        if (fruit.y > height + 50) {
+            fruit. remove (); missedFruits += 1;
+        }
+    }
     // Display: Score, Missed, Timer
     stroke (158, 69, 69); // rgb colour fill (255); textSize (24);
     fill(255)
