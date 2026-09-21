@@ -45,6 +45,8 @@ function draw(){
         missedFruits = 0;
         fruitGroup. removeAll();
         fruitHalves.removeAll();
+        gameStartTime = millis(); // capture time started
+        gameTimer = 0; // timer counter
     }
 
     // Start screen
