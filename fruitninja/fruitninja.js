@@ -36,7 +36,7 @@ function draw(){
     clear(); // optional to clear before applying an image
     image (dojoBG, 0, 0, width, height);
     // Start screen
-    if (gameState === 'start') {
+    if (gameState === "start") {
         fill(0, 180);
         rect (0, 0, width, height);
         fill (255);
