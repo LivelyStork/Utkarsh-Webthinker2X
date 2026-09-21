@@ -57,6 +57,7 @@ function draw(){
     textSize(24)
     textAlign (LEFT, TOP);
     text('Score: ' + score, 10, 10);
+    text ('Missed: ' + missedFruits, 200, 10);
 }
 
 // spawnFruit function
