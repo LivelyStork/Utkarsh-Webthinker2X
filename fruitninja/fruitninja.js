@@ -37,10 +37,10 @@ function draw(){
     image (dojoBG, 0, 0, width, height);
     // Start screen
     if (gameState === 'start') {
-fill(0, 180);
-rect (0, 0, width, height);
-fill (255);
-textAlign(CENTER, CENTER);
+        fill(0, 180);
+        rect (0, 0, width, height);
+        fill (255);
+        textAlign(CENTER, CENTER);
 textSize (48);
 text('Fruit Ninja', width / 2, height / 2 - 40);
 textSize (24);
