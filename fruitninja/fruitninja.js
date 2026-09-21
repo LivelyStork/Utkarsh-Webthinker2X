@@ -35,6 +35,15 @@ function setup (){
 function draw(){
     clear(); // optional to clear before applying an image
     image (dojoBG, 0, 0, width, height);
+
+    if ((kb.presses(' ') || mouse.presses()) && (gameState === 'start')) {
+        gameState = "play";
+        score = 0;
+        missedFruits = 0;
+        fruitGroup. removeAll();
+        fruitHalves.removeAll();
+    }
+
     // Start screen
     if (gameState === "start") {
         fill(0, 180);
@@ -47,13 +56,7 @@ function draw(){
         text ('Press SPACE or Click to Start', width / 2, height / 2 + 20);
         return; // do not process rest of this function
     }
-    if ((kb.presses(' ') || mouse.presses()) && (gameState === 'start')) {
-        gameState = "play";
-        score = 0;
-        missedFruits = 0;
-        fruitGroup. removeAll();
-        fruitHalves.removeAll();
-    }
+    
     // call spawnFruit function
     if (frameCount % 120 === 0){
         spawnFruit();
