@@ -41,10 +41,10 @@ function draw(){
         rect (0, 0, width, height);
         fill (255);
         textAlign(CENTER, CENTER);
-textSize (48);
-text('Fruit Ninja', width / 2, height / 2 - 40);
-textSize (24);
-text ('Press SPACE or Click to Start', width / 2, height / 2 + 20); return; // do not process rest of this function
+        textSize (48);
+        text('Fruit Ninja', width / 2, height / 2 - 40);
+        textSize (24);
+        text ('Press SPACE or Click to Start', width / 2, height / 2 + 20); return; // do not process rest of this function
 }
     // call spawnFruit function
     if (frameCount % 120 === 0){
