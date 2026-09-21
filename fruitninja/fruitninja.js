@@ -48,7 +48,7 @@ function draw(){
         return; // do not process rest of this function
     }
     if ((kb.presses(' ') || mouse.presses()) && (gameState === 'start')) {
-        gameState = 'play';
+        gameState = "play";
         score = 0;
         missedFruits = 0;
         fruitGroup. removeAll();
