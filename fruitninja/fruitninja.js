@@ -105,5 +105,4 @@ function sliceFruit() {
             break; // only slice one fruit per frame
         }
     }
-    
 }
