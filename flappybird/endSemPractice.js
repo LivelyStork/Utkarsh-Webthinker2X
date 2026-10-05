@@ -20,7 +20,8 @@ function setup() {
 
 function draw(){
 
-    background(bg, 0, 0, 600, 400);
+    //use image instead
+    img(bg, 0, 0, 600, 400);
     if (mouse.presses()){
         bird.velocity.y += 5;
     }
