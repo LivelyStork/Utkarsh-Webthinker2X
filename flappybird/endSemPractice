@@ -12,5 +12,6 @@ function setup(){
     bird = new Sprite();
     bird.x = 300;
     bird.y = 200;
-    bird.img = bird
+    bird.img = bird;
+    bird.mass = 2;
 }
