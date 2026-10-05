@@ -6,7 +6,7 @@ function preload() {
     bird = loadImage("assets/bluebird-midflap.png");
 }
 
-function setup(){
+function setup() {
     new Canvas(600,400);
     background("white");
 
