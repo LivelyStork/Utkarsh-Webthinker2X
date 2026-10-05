@@ -48,7 +48,7 @@ function draw(){
         gameState = "play";
         score = 0;
         missedFruits = 0;
-        fruitGroup.removeAll();
+        fruitGroup.removeAll;
         fruitHalves.removeAll();
         gameStartTime = millis(); // capture time started
         gameTimer = 0; // timer counter
