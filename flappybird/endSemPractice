@@ -1,2 +1,2 @@
-let bird
-let back
+let bird;
+let background;
