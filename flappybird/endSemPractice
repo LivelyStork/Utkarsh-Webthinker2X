@@ -8,11 +8,14 @@ function preload() {
 
 function setup(){
     new Canvas(600,400);
-    background(bg);
 
     bird = new Sprite();
     bird.x = 300;
     bird.y = 200;
     bird.img = bird;
     bird.mass = 2;
+}
+
+function draw(){
+    
 }
