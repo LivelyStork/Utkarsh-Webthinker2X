@@ -18,5 +18,5 @@ function setup(){
 }
 
 function draw(){
-    background(bg, )
+    background(bg, 0, 0, width, height)
 }
