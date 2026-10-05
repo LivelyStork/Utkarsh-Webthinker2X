@@ -20,6 +20,6 @@ function setup(){
 function draw(){
     background(bg, 0, 0, width, height);
     if (mouse.presses()){
-        bird.
+        bird.velocity.y += 5
     }
 }
