@@ -3,7 +3,7 @@ let bg;
 
 function preload() {
     bg = loadImage("assets/background-night.png");
-    bird = loadImage("assets/bluebird-midflap.png");
+    birdblue = loadImage("assets/bluebird-midflap.png");
 }
 
 function setup() {
@@ -13,7 +13,7 @@ function setup() {
     bird = new Sprite();
     bird.x = 300;
     bird.y = 200;
-    bird.img = bird;
+    bird.img = birdblue;
     bird.mass = 2;
     world.gravity.y = 10;
 }
@@ -23,7 +23,7 @@ function draw(){
     //use image instead
     image(bg, 0, 0, 600, 400);
     if (mouse.presses()){
-        bird.velocity.y += 5;
+        bird.velocity.y = -5;
     }
     
 }
