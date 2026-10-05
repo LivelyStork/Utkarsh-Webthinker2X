@@ -5,3 +5,7 @@ function preload() {
     bg = loadImage("assets/background-night.png")
     bird = loadImage("assets/bluebird-midflap.png")
 }
+
+function setup(){
+    
+}
