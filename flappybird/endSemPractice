@@ -1,5 +1,5 @@
 let bird;
-let background;
+let bg;
 
 function preload() {
     
