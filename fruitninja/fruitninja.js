@@ -8,6 +8,10 @@ let gameState = "start"; // 'start', 'play', 'gameover'
 let gameStartTime = 0; // ms when play starts
 let gameTimer = 0; // seconds elapsed
 let gameDuration = 60; // length of one game
+let sliceSound; // sound when fruit is sliced
+let backgroundTrack; // background music
+let difficultyNumFruits = 1; // number of fruits to spawn per interval
+let lastDifficultyIncrease = 0; // last time difficulty increased
 
 function preload(){
     dojoBG =loadImage('assets/dojobackground.png');
@@ -23,7 +27,8 @@ function preload(){
         half1: loadImage('assets/watermelonhalf.png'),
         half2: loadImage('assets/watermelonhalf.png'),
     }
-
+    sliceSound = loadSound('assets/fruit-ninja-combo.mp3');
+    backgroundTrack = loadSound('assets/fruit-ninja-bgtrack.mp3');
     // store the fruit objects into an array
     fruitTypes = [peach, watermelon];
     fruitGroup = new Group(); // new group for fruits
@@ -37,16 +42,22 @@ function setup (){
 }
 function draw(){
     clear(); // optional to clear before applying an image
-    image (dojoBG, 0, 0, width, height);
+    image(dojoBG, 0, 0, width, height);
 
     if ((kb.presses(' ') || mouse.presses()) && (gameState === 'start' || gameState === 'gameover')) {
         gameState = "play";
         score = 0;
         missedFruits = 0;
-        fruitGroup. removeAll();
+        fruitGroup.removeAll();
         fruitHalves.removeAll();
         gameStartTime = millis(); // capture time started
         gameTimer = 0; // timer counter
+        difficultyNumFruits = 1;
+        // Start background music if not playing
+        // if (!backgroundTrack.isPlaying()) {
+        //     backgroundTrack.loop();
+        // }
+        
     }
 
     // Start screen
@@ -63,8 +74,11 @@ function draw(){
     }
     
     // call spawnFruit function
+    // Fruit spawn logic: spawn fruits at interval, increase difficulty
     if (frameCount % 120 === 0){
-        spawnFruit();
+        for (let i = 0; i < difficultyNumFruits; i++){
+            spawnFruit();
+        }
     }
     if (mouse.pressing ()){
         trail = new Sprite(mouse.x, mouse.y, 7);
@@ -81,6 +95,7 @@ function draw(){
     }
     // Game over screen
     if (gameState === 'gameover') {
+        
         fill (0, 180);
         rect (0, 0, width, height);
         fill(255,0,0);
@@ -92,7 +107,14 @@ function draw(){
         text ('Score: ' + score, width / 2, height / 2);
         text ('Missed Fruits: ' + missedFruits, width / 2, height / 2 + 40);
         text('Press SPACE or Click to Restart', width / 2, height / 2 + 80);
+        fruitGroup.removeAll();
         return;
+    }
+    
+    // Increase difficulty every 15 seconds 
+    if (gameTimer - lastDifficultyIncrease >= 15){
+        difficultyNumFruits += 1;
+        lastDifficultyIncrease = gameTimer;
     }
     // Display: Score, Missed, Timer
     stroke (158, 69, 69); // rgb colour fill (255); textSize (24);
@@ -162,6 +184,7 @@ function sliceFruit() {
             const fx = fruit.x; // x coordinate for the sliced fruit
             const fy = fruit.y; // y coordinate for the sliced fruit
             fruit.remove(); // remove whole fruit
+            //sliceSound.play();
             splitFruit(fx, fy, fruit.type); // spawn halves
             score += 1
             break; // only slice one fruit per frame
