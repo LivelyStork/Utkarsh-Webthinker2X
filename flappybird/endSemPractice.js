@@ -12,7 +12,7 @@ function setup() {
 
     bird = new Sprite();
     bird.x = 300;
-    bird.y = 200;
+    bird.y = 0;
     bird.img = birdblue;
     bird.mass = 2;
     world.gravity.y = 10;
