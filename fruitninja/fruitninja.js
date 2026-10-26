@@ -270,7 +270,7 @@ function sliceFruit() {
       splash.img = fruit.type.splash;
       splash.collider = "kinematic"
       splash.life = 10;
-
+      
       break; // only slice one fruit per frame
     }
   }
