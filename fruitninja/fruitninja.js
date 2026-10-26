@@ -67,11 +67,11 @@ function preload(){
     splash: loadImage('assets/fruitninja_peachsplash.png'),
   }
 
-  let  = {
-    whole: loadImage('assets/fruitninja_berry.png'),
-    half1: loadImage('assets/fruitninja_berry_half1.png'),
-    half2: loadImage('assets/fruitninja_berry_half2.png'),
-    splash: loadImage('assets/fruitninja_berrySplash.png'),
+  let melon = {
+    whole: loadImage('assets/fruitninja_melon.png'),
+    half1: loadImage('assets/fruitninja_melon_half1.png'),
+    half2: loadImage('assets/fruitninja_melon_half2.png'),
+    splash: loadImage('assets/fruitninja_melonSplash.png'),
   }
 
   // store the fruit objects into an array
