@@ -55,8 +55,8 @@ function preload(){
 
   let berry = {
     whole: loadImage('assets/fruitninja_berry.png'),
-    half1: loadImage('assets/fruitninja_berryHalf1.png'),
-    half2: loadImage('assets/fruitninja_berryHalf2.png'),
+    half1: loadImage('assets/fruitninja_berry_half1.png'),
+    half2: loadImage('assets/fruitninja_berry_half2.png'),
     splash: loadImage('assets/fruitninja_berrySplash.png'),
   }
 
