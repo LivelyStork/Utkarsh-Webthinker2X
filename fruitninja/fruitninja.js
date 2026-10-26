@@ -53,7 +53,7 @@ function preload(){
     effect: "addtime" //check for this inside the sliceFruit() function to add time when sliced.
   }
 
-  let timeFruit = {
+  let berry = {
     whole: loadImage('assets/fruitninja_clock.png'),
     half1: loadImage('assets/fruitninja_clockHalf1.png'),
     half2: loadImage('assets/fruitninja_clockHalf2.png'),
