@@ -47,7 +47,7 @@ function preload(){
 
   let timeFruit = {
     whole: loadImage('assets/clock.png'),
-    half1: loadImage('assets/timefruithalf.png'),
+    half1: loadImage('assets/clockHalf.png'),
     splash: loadImage('assets/timefruitsplash.png')
   }
 
