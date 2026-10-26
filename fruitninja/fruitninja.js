@@ -249,7 +249,21 @@ function sliceFruit() {
 
       splitFruit(fx, fy, fruit.type); // spawn halves
 
-      
+      if (fruit.type.effect !== "addtime") {
+        //---show splash sprite on slice---//
+        let splash = new Sprite(fx, fy, 40);
+        splash.img = fruit.type.splash;
+        splash.collider = "kinematic"
+        splash.life = 10;
+        score += 1 // increase score by 1
+      }else{//for time fruits, add time.
+        //---show star sprite on slice---//
+        let star = new Sprite(fx, fy, 80);
+        star.img = fruit.type.splash;
+        star.collider = "kinematic"
+        star.life = 10;
+        gameDuration += 2; //add 2 seconds
+      }
       
       //---Splash---//
       let splash = new Sprite(fx, fy, 40);
