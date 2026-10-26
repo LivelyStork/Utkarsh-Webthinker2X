@@ -71,11 +71,11 @@ function preload(){
     whole: loadImage('assets/fruitninja_melon.png'),
     half1: loadImage('assets/fruitninja_melon_half1.png'),
     half2: loadImage('assets/fruitninja_melon_half2.png'),
-    splash: loadImage('assets/fruitninja_melonSplash.png'),
+    splash: loadImage('assets/fruitninja_watermelonsplash.png'),
   }
 
   // store the fruit objects into an array
-  fruitTypes = [peach, watermelon, timeFruit, berry, grape];
+  fruitTypes = [peach, watermelon, timeFruit, berry, grape, melon];
 
   // sound effects
   sliceSound = loadSound('assets/fruit-ninja-combo.mp3');
