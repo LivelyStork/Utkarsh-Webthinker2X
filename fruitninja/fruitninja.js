@@ -271,7 +271,7 @@ function sliceFruit() {
       splash.collider = "kinematic"
       splash.life = 10;
 
-      score += 1 // increase score by 1
+      // score += 1 // increase score by 1
       
       break; // only slice one fruit per frame
     }
