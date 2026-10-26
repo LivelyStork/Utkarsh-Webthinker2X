@@ -126,6 +126,7 @@ function draw(){
     fruitHalves.removeAll();
     gameStartTime = millis(); // capture time started
     gameTimer = 0;  // timer counter
+    gameDuration = 60; // reset game duration
     difficultyNumFruits = 1; // start with 1 fruit
 
     //reset lives
