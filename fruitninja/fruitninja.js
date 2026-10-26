@@ -71,7 +71,7 @@ function preload(){
     whole: loadImage('assets/fruitninja_melon.png'),
     half1: loadImage('assets/fruitninja_melon_half1.png'),
     half2: loadImage('assets/fruitninja_melon_half2.png'),
-    splash: loadImage('assets/fruitninja_watermelonsplash.png'),
+    splash: loadImage('assets/watermelonsplash.png'),
   }
 
   // store the fruit objects into an array
