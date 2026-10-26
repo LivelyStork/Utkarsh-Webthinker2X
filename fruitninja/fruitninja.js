@@ -58,7 +58,6 @@ function preload(){
     half1: loadImage('assets/fruitninja_berryHalf1.png'),
     half2: loadImage('assets/fruitninja_berryHalf2.png'),
     splash: loadImage('assets/fruitninja_berrySplash.png'),
-    effect: "addtime" //check for this inside the sliceFruit() function to add time when sliced.
   }
 
 
