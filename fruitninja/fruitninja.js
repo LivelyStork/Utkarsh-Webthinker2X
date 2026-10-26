@@ -68,7 +68,7 @@ function preload(){
   }
 
   // store the fruit objects into an array
-  fruitTypes = [peach, watermelon, timeFruit, berry];
+  fruitTypes = [peach, watermelon, timeFruit, berry, grape];
 
   // sound effects
   sliceSound = loadSound('assets/fruit-ninja-combo.mp3');
