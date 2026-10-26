@@ -248,6 +248,8 @@ function sliceFruit() {
       sliceSound.play();
 
       splitFruit(fx, fy, fruit.type); // spawn halves
+
+      
       
       //---Splash---//
       let splash = new Sprite(fx, fy, 40);
