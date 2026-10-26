@@ -45,7 +45,11 @@ function preload(){
     splash: loadImage('assets/watermelonsplash.png')
   }
 
-  let timeFruit
+  let timeFruit = {
+    whole: loadImage('assets/timefruitwhole.png'),
+    half1: loadImage('assets/timefruithalf.png'),
+    splash: loadImage('assets/timefruitsplash.png')
+  }
 
   // store the fruit objects into an array
   fruitTypes = [peach, watermelon];
