@@ -47,8 +47,8 @@ function preload(){
 
   let timeFruit = {
     whole: loadImage('assets/clock.png'),
-    half1: loadImage('assets/clockHalf.png'),
-    splash: loadImage('assets/timefruitsplash.png')
+    half1: loadImage('assets/clockHalf1.png'),
+    splash: loadImage('assets/.png')
   }
 
   // store the fruit objects into an array
