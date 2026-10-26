@@ -53,6 +53,8 @@ function preload(){
     effect: "addtime" //check for this inside the sliceFruit() function to add time when sliced.
   }
 
+  
+
   // store the fruit objects into an array
   fruitTypes = [peach, watermelon, timeFruit];
 
