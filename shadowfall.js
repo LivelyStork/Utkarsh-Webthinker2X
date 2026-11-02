@@ -246,6 +246,7 @@ function addEnemy(type, x) {
     boss: { width: 64, height: 64, health: 360, damage: 18, speed: 0.95, color: '#8d303e' }
   }[type];
   const sprite = new Sprite(x, GROUND_TOP - stats.height / 2, stats.width, stats.height);
+  disableEnemyToEnemyCollisions(sprite);
   sprite.color = color(stats.color);
   sprite.stroke = color(type === 'boss' ? '#ef7d69' : '#d7856d');
   sprite.strokeWeight = type === 'boss' ? 3 : 1;
@@ -264,6 +265,12 @@ function addEnemy(type, x) {
     wallBreakClock: random(1.5, 2.5),
     alive: true
   });
+}
+
+function disableEnemyToEnemyCollisions(sprite) {
+  for (let fixture = sprite.body.getFixtureList(); fixture; fixture = fixture.getNext()) {
+    fixture.setFilterGroupIndex(-1);
+  }
 }
 
 function updateEnemies(dt) {
