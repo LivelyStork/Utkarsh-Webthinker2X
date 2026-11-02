@@ -20,7 +20,7 @@ Build the game based on these details:
 
 Genre: Fantasy/horror  
 
-Theme: 
+Theme: surviving
 
 Mechanics: _____  
 
