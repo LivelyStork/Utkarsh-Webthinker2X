@@ -381,9 +381,13 @@ function updateProjectiles(dt) {
     bolt.posY += bolt.velocityY;
     bolt.age += dt;
 
-    if (bolt.owner === 'boss' && projectileHitsObstacle(bolt)) {
-      projectiles.splice(i, 1);
-      continue;
+    if (bolt.owner === 'boss') {
+      const obstacle = projectileHitsObstacle(bolt);
+      if (obstacle) {
+        if (obstacle !== true) damageBuildingBlock(obstacle);
+        projectiles.splice(i, 1);
+        continue;
+      }
     }
 
     if (bolt.owner === 'player') {
@@ -414,11 +418,11 @@ function updateProjectiles(dt) {
 function projectileHitsObstacle(bolt) {
   if (bolt.posY + bolt.radius >= GROUND_TOP) return true;
 
-  return buildings.some(block =>
+  return buildings.find(block =>
     block.available &&
     abs(bolt.posX - block.sprite.x) <= block.sprite.w / 2 + bolt.radius &&
     abs(bolt.posY - block.sprite.y) <= block.sprite.h / 2 + bolt.radius
-  );
+  ) || null;
 }
 
 function updateHealing(dt) {
