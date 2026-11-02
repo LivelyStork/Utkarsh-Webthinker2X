@@ -212,6 +212,11 @@ function updateWaves(dt) {
   if (waveClock > 0) return;
 
   if (wave < 3) {
+    const starterSwordBreaks = wave === 2 && meleeWeapon === 'Old sword';
+    if (starterSwordBreaks) {
+      meleeWeapon = 'Broken sword';
+      meleeDamage = 8;
+    }
     wave += 1;
     spawnWaveResources(wave);
     const size = wave + 2;
@@ -220,7 +225,9 @@ function updateWaves(dt) {
       const side = i % 2 === 0 ? GAME_WIDTH - 55 - (i % 3) * 28 : 55 + (i % 3) * 28;
       addEnemy(enemyType, side);
     }
-    setMessage(`Wave ${wave} — supplies are scattered across the land!`, 4);
+    setMessage(starterSwordBreaks
+      ? 'Your Old Sword broke after wave 2! Craft an Iron Sword.'
+      : `Wave ${wave} — supplies are scattered across the land!`, 4);
     waveClock = 5;
     return;
   }
