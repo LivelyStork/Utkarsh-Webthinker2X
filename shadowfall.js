@@ -15,8 +15,10 @@ let gameStatus = 'playing';
 let wave = 0;
 let waveClock = 3;
 let bossStarted = false;
-let weapon = 'Old sword';
-let weaponDamage = 18;
+let meleeWeapon = 'Old sword';
+let meleeDamage = 18;
+let bowOwned = false;
+let bowDamage = 28;
 let attackClock = 0;
 let bowShotClock = 0;
 let facing = 1;
@@ -358,17 +360,16 @@ function updateHealing(dt) {
 function attack() {
   if (gameStatus !== 'playing') return;
 
-  attackClock = weapon === 'Ember blade' ? 0.42 : 0.5;
+  attackClock = meleeWeapon === 'Ember blade' ? 0.42 : 0.5;
   const target = closestEnemyInRange();
   if (!target) {
     setMessage('Swing closer to a blighted creature.', 1.2);
     return;
   }
 
-  const meleeDamage = weapon === 'Warden bow' ? 18 : weaponDamage;
   target.health -= meleeDamage;
   target.sprite.vel.x = facing * (target.type === 'boss' ? 2 : 4);
-  setMessage(`${weapon === 'Warden bow' ? 'Old sword' : weapon} strikes for ${meleeDamage}!`, 1);
+  setMessage(`${meleeWeapon} strikes for ${meleeDamage}!`, 1);
   if (target.health <= 0) defeatEnemy(target);
 }
 
@@ -387,7 +388,7 @@ function firePlayerArrow() {
     velocityX: cos(angle) * speed,
     velocityY: sin(angle) * speed,
     radius: 5,
-    damageValue: weaponDamage,
+    damageValue: bowDamage,
     age: 0
   });
 }
@@ -441,7 +442,7 @@ function mousePressed() {
 
   if (handleWorldClick(mouseX, mouseY)) return false;
   facing = mouseX >= hero.x ? 1 : -1;
-  if (weapon === 'Warden bow') firePlayerArrow();
+  if (bowOwned) firePlayerArrow();
   else attack();
   return false;
 }
@@ -512,8 +513,8 @@ function craftIronSword() {
   }
   supplies.wood -= 4;
   supplies.iron -= 3;
-  weapon = 'Iron sword';
-  weaponDamage = 34;
+  meleeWeapon = 'Iron sword';
+  meleeDamage = 34;
   setMessage('Forged an Iron sword! Your attacks are stronger.', 3);
 }
 
@@ -524,21 +525,24 @@ function craftEmberBlade() {
   }
   supplies.iron -= 3;
   supplies.embers -= 2;
-  weapon = 'Ember blade';
-  weaponDamage = 52;
+  meleeWeapon = 'Ember blade';
+  meleeDamage = 52;
   setMessage('Forged the Ember blade — a weapon fit for a king.', 3);
 }
 
 function craftWardenBow() {
+  if (bowOwned) {
+    setMessage('You already have the Warden bow.', 2);
+    return;
+  }
   if (supplies.wood < 5 || supplies.iron < 3) {
     setMessage('Warden bow needs 5 wood and 3 iron.', 2.5);
     return;
   }
   supplies.wood -= 5;
   supplies.iron -= 3;
-  weapon = 'Warden bow';
-  weaponDamage = 28;
-  setMessage('Crafted the Warden bow. Face an enemy and press SPACE to shoot!', 3);
+  bowOwned = true;
+  setMessage('Crafted the Warden bow. Click in the arena to fire; SPACE remains melee.', 3);
 }
 
 function brewTonic() {
@@ -657,7 +661,8 @@ function drawSupplyLine() {
   textAlign(RIGHT, CENTER);
   fill('#f0d99c');
   textSize(12);
-  text(`${weapon}  ·  ${weaponDamage} dmg`, GAME_WIDTH - 22, 76);
+  textAlign(LEFT, CENTER);
+  text(`SWORD: ${meleeWeapon} (${meleeDamage})   BOW: ${bowOwned ? `Warden bow (${bowDamage})` : 'none'}`, 20, 76);
 }
 
 function drawWaveLabel() {
@@ -806,8 +811,10 @@ function restartGame() {
   wave = 0;
   waveClock = 3;
   bossStarted = false;
-  weapon = 'Old sword';
-  weaponDamage = 18;
+  meleeWeapon = 'Old sword';
+  meleeDamage = 18;
+  bowOwned = false;
+  bowDamage = 28;
   attackClock = 0;
   bowShotClock = 0;
   facing = 1;
