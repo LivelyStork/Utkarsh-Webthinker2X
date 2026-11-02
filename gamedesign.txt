@@ -18,9 +18,9 @@ Update the existing “index.html” homepage to include a link to the new game.
 
 Build the game based on these details:
 
-Genre: _____  
+Genre: Fantasy/horror  
 
-Theme: _____  
+Theme: 
 
 Mechanics: _____  
 
