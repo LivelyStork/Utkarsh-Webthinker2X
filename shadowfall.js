@@ -732,7 +732,7 @@ function drawToolbar() {
     'click ground • 2 wood',
     '12 wood + 3 stone'
   ];
-  const bonuses = ['', '', '', '', '', 'REGEN + 50% DAMAGE'];
+  const bonuses = ['', '', '', '', '', '3 HP/s • +50% damage'];
   const buttonWidth = 148;
   const gap = 6;
   for (let i = 0; i < labels.length; i++) {
