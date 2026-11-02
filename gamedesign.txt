@@ -26,9 +26,9 @@ Mechanics: attacking, breaking, building, healing
 
 Objectives: surviving and beating the boss
 
-Controls: WASD and space and   
+Controls: WASD and space and clicks  
 
-Game inspiration:_____  
+Game inspiration: t  
 
 Additional requirements:
 
