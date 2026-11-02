@@ -9,6 +9,7 @@ let resources = [];
 let enemies = [];
 let projectiles = [];
 let buildings = [];
+let shelters = [];
 let playerData;
 let supplies;
 let gameStatus = 'playing';
@@ -346,15 +347,39 @@ function updateProjectiles(dt) {
 }
 
 function updateHealing(dt) {
-  if (millis() - playerData.lastHurt < 4000 || playerData.health >= playerData.maxHealth) {
+  if (playerData.health >= playerData.maxHealth) {
     healClock = 0;
     return;
   }
+
+  if (isPlayerSheltered()) {
+    healClock += dt;
+    if (healClock >= 1) {
+      playerData.health = min(playerData.maxHealth, playerData.health + 3);
+      healClock -= 1;
+    }
+    return;
+  }
+
+  if (millis() - playerData.lastHurt < 4000) {
+    healClock = 0;
+    return;
+  }
+
   healClock += dt;
   if (healClock >= 3) {
     playerData.health = min(playerData.maxHealth, playerData.health + 4);
     healClock = 0;
   }
+}
+
+function isPlayerSheltered() {
+  return shelters.some(shelter =>
+    shelter.blocks.some(block => block.available) &&
+    abs(hero.x - shelter.centerX) <= 48 &&
+    hero.y >= GROUND_TOP - 104 &&
+    hero.y <= GROUND_TOP + 16
+  );
 }
 
 function attack() {
@@ -367,9 +392,10 @@ function attack() {
     return;
   }
 
-  target.health -= meleeDamage;
+  const damage = Math.round(meleeDamage * (isPlayerSheltered() ? 1.5 : 1));
+  target.health -= damage;
   target.sprite.vel.x = facing * (target.type === 'boss' ? 2 : 4);
-  setMessage(`${meleeWeapon} strikes for ${meleeDamage}!`, 1);
+  setMessage(`${meleeWeapon} strikes for ${damage}!`, 1);
   if (target.health <= 0) defeatEnemy(target);
 }
 
@@ -388,7 +414,7 @@ function firePlayerArrow() {
     velocityX: cos(angle) * speed,
     velocityY: sin(angle) * speed,
     radius: 5,
-    damageValue: bowDamage,
+    damageValue: Math.round(bowDamage * (isPlayerSheltered() ? 1.5 : 1)),
     age: 0
   });
 }
@@ -584,6 +610,8 @@ function buildHouse() {
   }
 
   const centerX = constrain(round(hero.x / 32) * 32, 96, GAME_WIDTH - 96);
+  const shelter = { centerX, blocks: [] };
+  shelters.push(shelter);
   const points = [
     [-64, -112], [-32, -112], [0, -112], [32, -112], [64, -112],
     [-64, -80], [64, -80],
@@ -591,19 +619,22 @@ function buildHouse() {
     [-64, -16], [64, -16]
   ];
   for (const [offsetX, offsetY] of points) {
-    addBuildingBlock(centerX + offsetX, GROUND_TOP + offsetY, 'wood', 1);
+    addBuildingBlock(centerX + offsetX, GROUND_TOP + offsetY, 'wood', 1, shelter);
   }
   supplies.wood -= 12;
   supplies.stone -= 3;
   setMessage('Large shelter built! The open doorway is in the middle.', 3);
 }
 
-function addBuildingBlock(x, y, material, returnAmount) {
+function addBuildingBlock(x, y, material, returnAmount, shelter = null) {
   const block = new Sprite(x, y, 32, 32, 'static');
   block.color = color(material === 'wood' ? '#94603a' : '#777c80');
   block.stroke = color('#d2b88e');
   block.strokeWeight = 1;
-  buildings.push({ sprite: block, material, returnAmount, hitsLeft: 3, available: true });
+  const building = { sprite: block, material, returnAmount, hitsLeft: 3, available: true };
+  buildings.push(building);
+  if (shelter) shelter.blocks.push(building);
+  return building;
 }
 
 function setMessage(text, seconds) {
@@ -665,6 +696,11 @@ function drawSupplyLine() {
   textSize(12);
   textAlign(LEFT, CENTER);
   text(`SWORD: ${meleeWeapon} (${meleeDamage})   BOW: ${bowOwned ? `Warden bow (${bowDamage})` : 'none'}`, 20, 76);
+  if (isPlayerSheltered()) {
+    textAlign(RIGHT, CENTER);
+    fill('#9cdb9e');
+    text('SHELTERED: +50% DMG • REGEN', GAME_WIDTH - 20, 76);
+  }
 }
 
 function drawWaveLabel() {
@@ -696,21 +732,27 @@ function drawToolbar() {
     'click ground • 2 wood',
     '12 wood + 3 stone'
   ];
+  const bonuses = ['', '', '', '', '', 'REGEN + 50% DAMAGE'];
   const buttonWidth = 148;
   const gap = 6;
   for (let i = 0; i < labels.length; i++) {
     const x = 12 + i * (buttonWidth + gap);
     fill(i === 4 && buildMode ? '#536f4d' : '#25303c');
-    rect(x, TOOLBAR_TOP + 6, buttonWidth, 48, 7);
+    rect(x, TOOLBAR_TOP + 4, buttonWidth, 68, 7);
     fill('#f1e7d0');
     textAlign(CENTER, CENTER);
     textStyle(BOLD);
     textSize(12);
-    text(labels[i], x + buttonWidth / 2, TOOLBAR_TOP + 20);
+    text(labels[i], x + buttonWidth / 2, TOOLBAR_TOP + 17);
     textStyle(NORMAL);
     fill('#aeb9bd');
     textSize(10);
-    text(costs[i], x + buttonWidth / 2, TOOLBAR_TOP + 40);
+    text(costs[i], x + buttonWidth / 2, TOOLBAR_TOP + 37);
+    if (bonuses[i]) {
+      fill('#9cdb9e');
+      textSize(9);
+      text(bonuses[i], x + buttonWidth / 2, TOOLBAR_TOP + 57);
+    }
   }
 }
 
@@ -809,6 +851,7 @@ function restartGame() {
   enemies = [];
   projectiles = [];
   buildings = [];
+  shelters = [];
   gameStatus = 'playing';
   wave = 0;
   waveClock = 3;
