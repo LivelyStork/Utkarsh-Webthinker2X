@@ -28,7 +28,7 @@ Objectives: surviving and beating the boss
 
 Controls: WASD and space and clicks  
 
-Game inspiration: t  
+Game inspiration: terreria/minecraft/mario  
 
 Additional requirements:
 
