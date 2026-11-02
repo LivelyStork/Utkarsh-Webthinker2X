@@ -149,6 +149,7 @@ function moveHero() {
   }
 
   if (keyIsDown(87) && hero.colliding(ground)) hero.vel.y = -8.5;
+  if (keyIsDown(83) && !hero.colliding(ground)) hero.vel.y = max(hero.vel.y, 5);
   hero.x = constrain(hero.x, 18, GAME_WIDTH - 18);
 }
 
@@ -216,9 +217,6 @@ function updateEnemies(dt) {
       hero.vel.x = dx >= 0 ? -3.2 : 3.2;
     }
 
-    if (enemy.type === 'boss' && frameCount % 8 === 0) {
-      // The boss health bar is drawn separately so it stays readable.
-    }
   }
 }
 
