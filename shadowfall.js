@@ -263,6 +263,7 @@ function updateEnemies(dt) {
 function updateEnemyWallBreaking(enemy, playerDx, dt) {
   const direction = Math.sign(playerDx);
   if (!direction) return false;
+  const breakInterval = enemy.type === 'boss' ? 1.2 : 1.8;
 
   const wall = buildings.find(block =>
     block.available &&
@@ -279,7 +280,7 @@ function updateEnemyWallBreaking(enemy, playerDx, dt) {
   enemy.sprite.vel.x = 0;
   if (enemy.wallTarget !== wall) {
     enemy.wallTarget = wall;
-    enemy.wallBreakClock = 1.8;
+    enemy.wallBreakClock = breakInterval;
   }
   enemy.wallBreakClock -= dt;
   if (enemy.wallBreakClock > 0) return true;
@@ -292,7 +293,7 @@ function updateEnemyWallBreaking(enemy, playerDx, dt) {
     setMessage('A blighted creature smashed through a wall!', 2);
   } else {
     wall.sprite.color = color(wall.hitsLeft === 2 ? '#795337' : '#593d31');
-    enemy.wallBreakClock = 1.8;
+    enemy.wallBreakClock = breakInterval;
   }
   return true;
 }
