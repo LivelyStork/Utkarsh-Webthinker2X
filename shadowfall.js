@@ -483,7 +483,7 @@ function attack() {
     return;
   }
 
-  const damage = Math.round(meleeDamage * (isPlayerSheltered() ? 1.5 : 1));
+  const damage = Math.round(meleeDamage * (isPlayerSheltered() ? 1.25 : 1));
   target.health -= damage;
   target.sprite.vel.x = facing * (target.type === 'boss' ? 2 : 4);
   setMessage(`${meleeWeapon} strikes for ${damage}!`, 1);
@@ -505,7 +505,7 @@ function firePlayerArrow() {
     velocityX: cos(angle) * speed,
     velocityY: sin(angle) * speed,
     radius: 5,
-    damageValue: Math.round(bowDamage * (isPlayerSheltered() ? 1.5 : 1)),
+    damageValue: Math.round(bowDamage * (isPlayerSheltered() ? 1.25 : 1)),
     age: 0
   });
 }
@@ -787,7 +787,7 @@ function drawSupplyLine() {
   if (isPlayerSheltered()) {
     textAlign(RIGHT, CENTER);
     fill('#9cdb9e');
-    text('SHELTERED: +50% DMG • REGEN', GAME_WIDTH - 20, 94);
+    text('SHELTERED: +25% DMG • REGEN', GAME_WIDTH - 20, 94);
   }
 }
 
@@ -820,7 +820,7 @@ function drawToolbar() {
     'click ground • 2 wood',
     '12 wood + 3 stone'
   ];
-  const bonuses = ['', '', '', '', '', '3 HP/s • +50% damage'];
+  const bonuses = ['', '', '', '', '', '3 HP/s • +25% damage'];
   const buttonWidth = 148;
   const gap = 6;
   for (let i = 0; i < labels.length; i++) {
