@@ -52,7 +52,6 @@ function createWorld() {
   hero.friction = 0.12;
   hero.bounciness = 0;
 
-  createResourceNodes();
 }
 
 function resetGameData() {
@@ -74,17 +73,36 @@ function addResource(x, type, amount) {
   resources.push({ sprite: node, type, amount, available: true });
 }
 
-function createResourceNodes() {
-  addResource(190, 'wood', 4);
-  addResource(315, 'iron', 2);
-  addResource(425, 'herb', 1);
-  addResource(485, 'iron', 2);
-  addResource(545, 'stone', 2);
-  addResource(665, 'wood', 4);
-  addResource(775, 'iron', 2);
-  addResource(875, 'herb', 1);
-  addResource(935, 'wood', 4);
-  addResource(50, 'stone', 2);
+function spawnWaveResources(waveNumber) {
+  const waveNodes = {
+    1: [
+      [190, 'wood', 4],
+      [315, 'iron', 2],
+      [50, 'stone', 2]
+    ],
+    2: [
+      [665, 'wood', 4],
+      [775, 'iron', 2],
+      [545, 'stone', 2],
+      [425, 'herb', 1]
+    ],
+    3: [
+      [935, 'wood', 4],
+      [485, 'wood', 2],
+      [875, 'iron', 2]
+    ]
+  };
+  for (const [x, type, amount] of waveNodes[waveNumber] || []) {
+    addResource(x, type, amount);
+  }
+}
+
+function clearUncollectedResources() {
+  for (const resource of resources) {
+    if (!resource.available) continue;
+    resource.available = false;
+    resource.sprite.remove();
+  }
 }
 
 function draw() {
@@ -195,17 +213,19 @@ function updateWaves(dt) {
 
   if (wave < 3) {
     wave += 1;
+    spawnWaveResources(wave);
     const size = wave + 2;
     for (let i = 0; i < size; i++) {
       const enemyType = i % 3 === 2 ? 'brute' : i % 2 === 0 ? 'crawler' : 'wraith';
       const side = i % 2 === 0 ? GAME_WIDTH - 55 - (i % 3) * 28 : 55 + (i % 3) * 28;
       addEnemy(enemyType, side);
     }
-    setMessage(`Wave ${wave} — the blighted are coming!`, 4);
+    setMessage(`Wave ${wave} — supplies are scattered across the land!`, 4);
     waveClock = 5;
     return;
   }
 
+  clearUncollectedResources();
   bossStarted = true;
   addEnemy('boss', GAME_WIDTH - 90);
   setMessage('THE HOLLOW KING has awakened!', 6);
@@ -894,6 +914,5 @@ function restartGame() {
   hero.y = GROUND_TOP - 28;
   hero.vel.x = 0;
   hero.vel.y = 0;
-  createResourceNodes();
   setMessage('The blight is spreading. Gather supplies and hold the line.', 5);
 }
