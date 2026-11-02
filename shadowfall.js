@@ -297,6 +297,7 @@ function fireBossProjectile(enemy) {
   const angle = atan2(deltaY, deltaX);
   const speed = 4.2;
   projectiles.push({
+    owner: 'boss',
     posX: enemy.sprite.x,
     posY: enemy.sprite.y,
     velocityX: cos(angle) * speed,
@@ -315,10 +316,25 @@ function updateProjectiles(dt) {
     bolt.posY += bolt.velocityY;
     bolt.age += dt;
 
-    if (dist(bolt.posX, bolt.posY, hero.x, hero.y) < bolt.radius + 20) {
+    if (bolt.owner === 'player') {
+      const target = enemies.find(enemy =>
+        enemy.alive &&
+        dist(bolt.posX, bolt.posY, enemy.sprite.x, enemy.sprite.y) < bolt.radius + max(enemy.sprite.w, enemy.sprite.h) / 2
+      );
+      if (target) {
+        target.health -= bolt.damageValue;
+        target.sprite.vel.x = Math.sign(bolt.velocityX) * (target.type === 'boss' ? 2 : 4);
+        if (target.health <= 0) defeatEnemy(target);
+        projectiles.splice(i, 1);
+        continue;
+      }
+    } else if (dist(bolt.posX, bolt.posY, hero.x, hero.y) < bolt.radius + 20) {
       if (hurtClock <= 0) hurtPlayer(bolt.damageValue);
       projectiles.splice(i, 1);
-    } else if (bolt.posX < -20 || bolt.posX > GAME_WIDTH + 20 ||
+      continue;
+    }
+
+    if (bolt.posX < -20 || bolt.posX > GAME_WIDTH + 20 ||
                bolt.posY < -20 || bolt.posY > GAME_HEIGHT + 20 || bolt.age > 4) {
       projectiles.splice(i, 1);
     }
@@ -338,9 +354,16 @@ function updateHealing(dt) {
 }
 
 function attack() {
-  attackClock = weapon === 'Ember blade' ? 0.42 : 0.5;
   if (gameStatus !== 'playing') return;
 
+  if (weapon === 'Warden bow') {
+    if (attackClock > 0) return;
+    attackClock = 0.72;
+    firePlayerArrow();
+    return;
+  }
+
+  attackClock = weapon === 'Ember blade' ? 0.42 : 0.5;
   const target = closestEnemyInRange();
   if (!target) {
     setMessage('Swing closer to a blighted creature.', 1.2);
@@ -351,6 +374,24 @@ function attack() {
   target.sprite.vel.x = facing * (target.type === 'boss' ? 2 : 4);
   setMessage(`${weapon} strikes for ${weaponDamage}!`, 1);
   if (target.health <= 0) defeatEnemy(target);
+}
+
+function firePlayerArrow() {
+  const target = enemies
+    .filter(enemy => enemy.alive && Math.sign(enemy.sprite.x - hero.x) === facing)
+    .sort((a, b) => abs(a.sprite.x - hero.x) - abs(b.sprite.x - hero.x))[0];
+  const angle = target ? atan2(target.sprite.y - hero.y, target.sprite.x - hero.x) : (facing === 1 ? 0 : 180);
+  const speed = 8;
+  projectiles.push({
+    owner: 'player',
+    posX: hero.x + facing * 18,
+    posY: hero.y - 5,
+    velocityX: cos(angle) * speed,
+    velocityY: sin(angle) * speed,
+    radius: 5,
+    damageValue: weaponDamage,
+    age: 0
+  });
 }
 
 function closestEnemyInRange() {
