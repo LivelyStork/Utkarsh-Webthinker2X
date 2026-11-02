@@ -24,7 +24,7 @@ Theme: surviving/beating boss
 
 Mechanics: attacking, breaking, building, healing  
 
-Objectives: _____  
+Objectives: 
 
 Controls: _____  
 
