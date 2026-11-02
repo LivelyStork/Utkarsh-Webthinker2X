@@ -98,25 +98,44 @@ function draw() {
 
 function drawScenery() {
   noStroke();
-  for (let i = 0; i < 10; i++) {
-    const x = i * 112 + 30;
+  const peaks = [188, 262, 214, 296, 236, 178, 278, 224, 306, 198];
+  for (let i = 0; i < peaks.length; i++) {
+    const x = i * 112 - 18;
     fill(i % 2 ? '#202d32' : '#26343a');
-    triangle(x, GROUND_TOP, x + 44, 170 + (i % 3) * 28, x + 88, GROUND_TOP);
-    fill('#36483c');
-    ellipse(x + 45, 332 + (i % 2) * 22, 90, 150);
+    triangle(x, GROUND_TOP, x + 54, peaks[i], x + 126, GROUND_TOP);
+
+    fill(i % 2 ? '#303e39' : '#36483c');
+    ellipse(x + 49, 365 + (i % 3) * 18, 102 + (i % 2) * 18, 112 + (i % 3) * 14);
     fill('#f1c782');
-    ellipse(x + 22, 170 + (i % 3) * 28, 3, 3);
+    ellipse(x + 30, peaks[i] - 8, 3, 3);
   }
 
   fill('#1b2430');
   rect(0, GROUND_TOP, GAME_WIDTH, GAME_HEIGHT - GROUND_TOP);
   fill('#435b43');
   rect(0, GROUND_TOP, GAME_WIDTH, 10);
+  fill('#52664a');
+  for (let x = 0; x < GAME_WIDTH; x += 96) {
+    const patchWidth = 34 + (x % 5) * 7;
+    rect(x + (x % 3) * 8, GROUND_TOP + 10, patchWidth, 20 + (x % 4) * 9);
+  }
+  fill('#303a34');
+  for (let x = 22; x < GAME_WIDTH; x += 83) {
+    const rockY = GROUND_TOP + 34 + (x % 4) * 13;
+    ellipse(x, rockY, 8 + (x % 3) * 3, 5 + (x % 2) * 3);
+    fill('#465047');
+    ellipse(x - 2, rockY - 2, 4, 2);
+    fill('#303a34');
+  }
+
   stroke('#60764e');
   strokeWeight(2);
-  for (let x = 12; x < GAME_WIDTH; x += 38) {
-    line(x, GROUND_TOP, x + 5, GROUND_TOP - 8);
+  for (let x = 8; x < GAME_WIDTH; x += 38) {
+    const height = 5 + (x % 4) * 2;
+    line(x, GROUND_TOP, x + 3 + (x % 3), GROUND_TOP - height);
+    if (x % 3 === 0) line(x + 5, GROUND_TOP, x + 3, GROUND_TOP - 5);
   }
+
   noStroke();
   fill('#25333a');
   for (let i = 0; i < 18; i++) {
