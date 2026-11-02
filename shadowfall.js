@@ -323,7 +323,7 @@ function handleWorldClick(x, y) {
   for (const resource of resources) {
     if (!resource.available) continue;
     const sprite = resource.sprite;
-    if (abs(x - sprite.x) < 24 && abs(y - sprite.y) < 24 && distance(hero.x, hero.y, sprite.x, sprite.y) < 150) {
+    if (abs(x - sprite.x) < 24 && abs(y - sprite.y) < 24 && dist(hero.x, hero.y, sprite.x, sprite.y) < 150) {
       gatherResource(resource);
       return true;
     }
@@ -332,7 +332,7 @@ function handleWorldClick(x, y) {
   for (const building of buildings) {
     if (!building.available) continue;
     const sprite = building.sprite;
-    if (abs(x - sprite.x) < 18 && abs(y - sprite.y) < 18 && distance(hero.x, hero.y, sprite.x, sprite.y) < 150) {
+    if (abs(x - sprite.x) < 18 && abs(y - sprite.y) < 18 && dist(hero.x, hero.y, sprite.x, sprite.y) < 150) {
       building.available = false;
       building.sprite.remove();
       supplies[building.material] += building.returnAmount;
@@ -402,7 +402,7 @@ function placeBlock(x, y) {
     return;
   }
   if (x < 24 || x > GAME_WIDTH - 24 || y < 320 || y > GROUND_TOP - 12 ||
-      distance(hero.x, hero.y, x, y) > 175) {
+      dist(hero.x, hero.y, x, y) > 175) {
     setMessage('Place blocks nearby, above the ground.', 2);
     return;
   }
@@ -448,7 +448,7 @@ function setMessage(text, seconds) {
 
 function drawInterface() {
   noStroke();
-  fill('#10131ce8');
+  fill(16, 19, 28, 232);
   rect(0, 0, GAME_WIDTH, 92);
 
   fill('#f1e7d0');
@@ -468,7 +468,7 @@ function drawInterface() {
   drawEnemyHealthBars();
 
   if (messageClock > 0 && gameStatus === 'playing') {
-    fill('#10131ce8');
+    fill(16, 19, 28, 232);
     rect(255, 96, 450, 30, 6);
     fill('#f3d9a1');
     textAlign(CENTER, CENTER);
@@ -578,7 +578,7 @@ function drawEnemyHealthBars() {
 
 function drawEndScreen() {
   noStroke();
-  fill('#080b12d9');
+  fill(8, 11, 18, 217);
   rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
   textAlign(CENTER, CENTER);
   fill(gameStatus === 'won' ? '#f0d58f' : '#e87970');
