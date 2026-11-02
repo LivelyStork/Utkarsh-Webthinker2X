@@ -290,7 +290,7 @@ function updateEnemies(dt) {
 function updateEnemyWallBreaking(enemy, playerDx, dt) {
   const direction = Math.sign(playerDx);
   if (!direction) return false;
-  const breakInterval = enemy.type === 'boss' ? 1.2 : 1.8;
+  const breakInterval = enemy.type === 'boss' ? 3 : 1.8;
 
   const wall = buildings.find(block =>
     block.available &&
