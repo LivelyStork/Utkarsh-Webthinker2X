@@ -50,7 +50,7 @@ function createWorld() {
 }
 
 function resetGameData() {
-  playerData = { health: 100, maxHealth: 100, lastHurt: 0 };
+  playerData = { health: 70, maxHealth: 70, lastHurt: 0 };
   supplies = { wood: 0, stone: 0, iron: 0, herbs: 0, embers: 0, coins: 0 };
 }
 
