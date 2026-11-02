@@ -227,6 +227,8 @@ function addEnemy(type, x) {
     damage: stats.damage,
     speed: stats.speed,
     attackClock: random(0.3, 1),
+    wallTarget: null,
+    wallBreakClock: random(1.5, 2.5),
     alive: true
   });
 }
@@ -238,6 +240,8 @@ function updateEnemies(dt) {
     enemy.sprite.vel.x = abs(dx) > 42 ? Math.sign(dx) * enemy.speed : 0;
     enemy.attackClock -= dt;
 
+    if (updateEnemyWallBreaking(enemy, dx, dt)) continue;
+
     const closeEnough = abs(dx) < 52 && abs(hero.y - enemy.sprite.y) < 52;
     if (enemy.type === 'boss' && !closeEnough && enemy.attackClock <= 0) {
       fireBossProjectile(enemy);
@@ -248,6 +252,43 @@ function updateEnemies(dt) {
       hero.vel.x = dx >= 0 ? -3.2 : 3.2;
     }
   }
+}
+
+function updateEnemyWallBreaking(enemy, playerDx, dt) {
+  const direction = Math.sign(playerDx);
+  if (!direction) return false;
+
+  const wall = buildings.find(block =>
+    block.available &&
+    Math.sign(block.sprite.x - enemy.sprite.x) === direction &&
+    abs(block.sprite.x - enemy.sprite.x) < abs(playerDx) &&
+    abs(block.sprite.y - enemy.sprite.y) < (block.sprite.h + enemy.sprite.h) / 2 + 8 &&
+    abs(block.sprite.x - enemy.sprite.x) <= (block.sprite.w + enemy.sprite.w) / 2 + 10
+  );
+  if (!wall) {
+    enemy.wallTarget = null;
+    return false;
+  }
+
+  enemy.sprite.vel.x = 0;
+  if (enemy.wallTarget !== wall) {
+    enemy.wallTarget = wall;
+    enemy.wallBreakClock = 1.8;
+  }
+  enemy.wallBreakClock -= dt;
+  if (enemy.wallBreakClock > 0) return true;
+
+  wall.hitsLeft -= 1;
+  if (wall.hitsLeft <= 0) {
+    wall.available = false;
+    wall.sprite.remove();
+    enemy.wallTarget = null;
+    setMessage('A blighted creature smashed through a wall!', 2);
+  } else {
+    wall.sprite.color = color(wall.hitsLeft === 2 ? '#795337' : '#593d31');
+    enemy.wallBreakClock = 1.8;
+  }
+  return true;
 }
 
 function fireBossProjectile(enemy) {
@@ -502,7 +543,7 @@ function addBuildingBlock(x, y, material, returnAmount) {
   block.color = color(material === 'wood' ? '#94603a' : '#777c80');
   block.stroke = color('#d2b88e');
   block.strokeWeight = 1;
-  buildings.push({ sprite: block, material, returnAmount, available: true });
+  buildings.push({ sprite: block, material, returnAmount, hitsLeft: 3, available: true });
 }
 
 function setMessage(text, seconds) {
