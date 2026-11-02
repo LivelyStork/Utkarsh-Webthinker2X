@@ -262,8 +262,7 @@ function fireBossProjectile(enemy) {
     velocityY: sin(angle) * speed,
     radius: 11,
     damageValue: 12,
-    age: 0,
-    active: true
+    age: 0
   });
   setMessage('The Hollow King hurls a blight bolt — dodge!', 1.5);
 }
