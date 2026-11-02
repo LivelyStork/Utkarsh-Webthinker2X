@@ -20,13 +20,13 @@ Build the game based on these details:
 
 Genre: Fantasy/horror  
 
-Theme: surviving/beating boss
+Theme: ridding the land of evil
 
 Mechanics: attacking, breaking, building, healing  
 
 Objectives: surviving and beating the boss
 
-Controls: _____  
+Controls:   
 
 Game inspiration:_____  
 
