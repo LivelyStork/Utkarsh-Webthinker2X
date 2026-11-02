@@ -22,7 +22,7 @@ Genre: Fantasy/horror
 
 Theme: ridding the land of evil
 
-Mechanics: attacking, breaking, building, healing
+Mechanics: attacking, breaking, building, crafting
 
 Objectives: surviving and beating the boss
 
