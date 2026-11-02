@@ -578,22 +578,24 @@ function placeBlock(x, y) {
 }
 
 function buildHouse() {
-  if (supplies.wood < 8 || supplies.stone < 3) {
-    setMessage('A shelter needs 8 wood and 3 stone.', 2.5);
+  if (supplies.wood < 12 || supplies.stone < 3) {
+    setMessage('A shelter needs 12 wood and 3 stone.', 2.5);
     return;
   }
 
-  const centerX = constrain(hero.x + facing * 105, 120, GAME_WIDTH - 120);
+  const centerX = constrain(hero.x + facing * 120, 120, GAME_WIDTH - 120);
   const points = [
-    [-32, -48], [0, -48], [32, -48],
-    [-32, -16], [32, -16]
+    [-64, -112], [-32, -112], [0, -112], [32, -112], [64, -112],
+    [-64, -80], [64, -80],
+    [-64, -48], [64, -48],
+    [-64, -16], [64, -16]
   ];
   for (const [offsetX, offsetY] of points) {
     addBuildingBlock(centerX + offsetX, GROUND_TOP + offsetY, 'wood', 1);
   }
-  supplies.wood -= 8;
+  supplies.wood -= 12;
   supplies.stone -= 3;
-  setMessage('Shelter built! You can break its blocks to reclaim wood.', 3);
+  setMessage('Large shelter built! The open doorway is in the middle.', 3);
 }
 
 function addBuildingBlock(x, y, material, returnAmount) {
@@ -692,7 +694,7 @@ function drawToolbar() {
     '5 wood + 3 iron',
     '2 herbs',
     'click ground • 2 wood',
-    '8 wood + 3 stone'
+    '12 wood + 3 stone'
   ];
   const buttonWidth = 148;
   const gap = 6;
