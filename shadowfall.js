@@ -26,6 +26,7 @@ let facing = 1;
 let buildMode = false;
 let hurtClock = 0;
 let healClock = 0;
+let wasSheltered = false;
 let message = 'The blight is spreading. Gather supplies and hold the line.';
 let messageClock = 5;
 
@@ -347,12 +348,16 @@ function updateProjectiles(dt) {
 }
 
 function updateHealing(dt) {
+  const sheltered = isPlayerSheltered();
   if (playerData.health >= playerData.maxHealth) {
     healClock = 0;
+    wasSheltered = sheltered;
     return;
   }
 
-  if (isPlayerSheltered()) {
+  if (sheltered) {
+    if (!wasSheltered) healClock = 0;
+    wasSheltered = true;
     healClock += dt;
     if (healClock >= 1) {
       playerData.health = min(playerData.maxHealth, playerData.health + 3);
@@ -361,6 +366,7 @@ function updateHealing(dt) {
     return;
   }
 
+  wasSheltered = false;
   if (millis() - playerData.lastHurt < 4000) {
     healClock = 0;
     return;
@@ -866,6 +872,7 @@ function restartGame() {
   buildMode = false;
   hurtClock = 0;
   healClock = 0;
+  wasSheltered = false;
   resetGameData();
   hero.x = 105;
   hero.y = GROUND_TOP - 28;
