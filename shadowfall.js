@@ -288,9 +288,10 @@ function updateEnemies(dt) {
 }
 
 function updateEnemyWallBreaking(enemy, playerDx, dt) {
+  if (enemy.type === 'boss') return updateBossWallBreaking(enemy, dt);
+
   const direction = Math.sign(playerDx);
   if (!direction) return false;
-  const breakInterval = enemy.type === 'boss' ? 3 : 1.8;
 
   const wall = buildings.find(block =>
     block.available &&
@@ -307,22 +308,52 @@ function updateEnemyWallBreaking(enemy, playerDx, dt) {
   enemy.sprite.vel.x = 0;
   if (enemy.wallTarget !== wall) {
     enemy.wallTarget = wall;
-    enemy.wallBreakClock = breakInterval;
+    enemy.wallBreakClock = 1.8;
   }
   enemy.wallBreakClock -= dt;
   if (enemy.wallBreakClock > 0) return true;
 
-  wall.hitsLeft -= 1;
-  if (wall.hitsLeft <= 0) {
-    wall.available = false;
-    wall.sprite.remove();
-    enemy.wallTarget = null;
-    setMessage('A blighted creature smashed through a wall!', 2);
-  } else {
-    wall.sprite.color = color(wall.hitsLeft === 2 ? '#795337' : '#593d31');
-    enemy.wallBreakClock = breakInterval;
-  }
+  damageBuildingBlock(wall);
+  enemy.wallTarget = null;
   return true;
+}
+
+function updateBossWallBreaking(enemy, dt) {
+  const touchingBlocks = buildings.filter(block =>
+    block.available &&
+    abs(block.sprite.x - enemy.sprite.x) <= (block.sprite.w + enemy.sprite.w) / 2 &&
+    abs(block.sprite.y - enemy.sprite.y) <= (block.sprite.h + enemy.sprite.h) / 2
+  );
+  if (touchingBlocks.length === 0) {
+    enemy.wallTargets = [];
+    return false;
+  }
+
+  enemy.sprite.vel.x = 0;
+  const sameTargets = enemy.wallTargets?.length === touchingBlocks.length &&
+    touchingBlocks.every(block => enemy.wallTargets.includes(block));
+  if (!sameTargets) {
+    enemy.wallTargets = touchingBlocks;
+    enemy.wallBreakClock = 3;
+  }
+
+  enemy.wallBreakClock -= dt;
+  if (enemy.wallBreakClock > 0) return true;
+
+  for (const block of touchingBlocks) damageBuildingBlock(block);
+  enemy.wallTargets = [];
+  return true;
+}
+
+function damageBuildingBlock(block) {
+  block.hitsLeft -= 1;
+  if (block.hitsLeft <= 0) {
+    block.available = false;
+    block.sprite.remove();
+    setMessage('A blighted creature smashed through a wall!', 2);
+    return;
+  }
+  block.sprite.color = color(block.hitsLeft === 2 ? '#795337' : '#593d31');
 }
 
 function fireBossProjectile(enemy) {
