@@ -18,6 +18,7 @@ let bossStarted = false;
 let weapon = 'Old sword';
 let weaponDamage = 18;
 let attackClock = 0;
+let bowShotClock = 0;
 let facing = 1;
 let buildMode = false;
 let hurtClock = 0;
@@ -147,6 +148,7 @@ function drawScenery() {
 
 function updateGame(dt) {
   attackClock = max(0, attackClock - dt);
+  bowShotClock = max(0, bowShotClock - dt);
   hurtClock = max(0, hurtClock - dt);
   messageClock = max(0, messageClock - dt);
 
@@ -356,13 +358,6 @@ function updateHealing(dt) {
 function attack() {
   if (gameStatus !== 'playing') return;
 
-  if (weapon === 'Warden bow') {
-    if (attackClock > 0) return;
-    attackClock = 0.72;
-    firePlayerArrow();
-    return;
-  }
-
   attackClock = weapon === 'Ember blade' ? 0.42 : 0.5;
   const target = closestEnemyInRange();
   if (!target) {
@@ -370,13 +365,16 @@ function attack() {
     return;
   }
 
-  target.health -= weaponDamage;
+  const meleeDamage = weapon === 'Warden bow' ? 18 : weaponDamage;
+  target.health -= meleeDamage;
   target.sprite.vel.x = facing * (target.type === 'boss' ? 2 : 4);
-  setMessage(`${weapon} strikes for ${weaponDamage}!`, 1);
+  setMessage(`${weapon === 'Warden bow' ? 'Old sword' : weapon} strikes for ${meleeDamage}!`, 1);
   if (target.health <= 0) defeatEnemy(target);
 }
 
 function firePlayerArrow() {
+  if (bowShotClock > 0) return;
+  bowShotClock = 0.72;
   const target = enemies
     .filter(enemy => enemy.alive && Math.sign(enemy.sprite.x - hero.x) === facing)
     .sort((a, b) => abs(a.sprite.x - hero.x) - abs(b.sprite.x - hero.x))[0];
@@ -443,7 +441,8 @@ function mousePressed() {
 
   if (handleWorldClick(mouseX, mouseY)) return false;
   facing = mouseX >= hero.x ? 1 : -1;
-  attack();
+  if (weapon === 'Warden bow') firePlayerArrow();
+  else attack();
   return false;
 }
 
@@ -810,6 +809,7 @@ function restartGame() {
   weapon = 'Old sword';
   weaponDamage = 18;
   attackClock = 0;
+  bowShotClock = 0;
   facing = 1;
   buildMode = false;
   hurtClock = 0;
