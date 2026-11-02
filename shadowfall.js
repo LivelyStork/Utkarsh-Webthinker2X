@@ -243,7 +243,7 @@ function addEnemy(type, x) {
     crawler: { width: 30, height: 30, health: 36, damage: 7, speed: 1.15, color: '#b6534b' },
     wraith: { width: 26, height: 38, health: 28, damage: 6, speed: 1.55, color: '#8467b5' },
     brute: { width: 42, height: 44, health: 68, damage: 12, speed: 0.72, color: '#775446' },
-    boss: { width: 64, height: 64, health: 360, damage: 18, speed: 0.95, color: '#8d303e' }
+    boss: { width: 56, height: 56, health: 360, damage: 18, speed: 0.95, color: '#8d303e' }
   }[type];
   const sprite = new Sprite(x, GROUND_TOP - stats.height / 2, stats.width, stats.height);
   disableEnemyToEnemyCollisions(sprite);
