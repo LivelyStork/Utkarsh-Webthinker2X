@@ -26,7 +26,7 @@ Mechanics: attacking, breaking, building, crafting
 
 Objectives: surviving and beating the boss
 
-Controls: WASD and space and clicks  
+Controls: WASD space trackpad clicks  
 
 Game inspiration: terreria/minecraft/mario  
 
