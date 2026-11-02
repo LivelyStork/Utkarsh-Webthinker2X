@@ -22,7 +22,7 @@ Genre: Fantasy/horror
 
 Theme: surviving/beating boss
 
-Mechanics: attacking, breaking, building   
+Mechanics: attacking, breaking, building, healing  
 
 Objectives: _____  
 
