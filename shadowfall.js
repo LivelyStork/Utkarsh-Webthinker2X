@@ -7,6 +7,7 @@ let hero;
 let ground;
 let resources = [];
 let enemies = [];
+let projectiles = [];
 let buildings = [];
 let playerData;
 let supplies;
@@ -90,6 +91,7 @@ function draw() {
   if (gameStatus === 'playing') {
     updateGame(dt);
     drawCombatEffects();
+    drawProjectiles();
   }
   drawInterface();
 
@@ -151,6 +153,7 @@ function updateGame(dt) {
   moveHero();
   if (keyIsDown(32) && attackClock <= 0) attack();
   updateEnemies(dt);
+  updateProjectiles(dt);
   updateWaves(dt);
   updateHealing(dt);
 
@@ -207,7 +210,7 @@ function addEnemy(type, x) {
     crawler: { width: 30, height: 30, health: 36, damage: 7, speed: 1.15, color: '#b6534b' },
     wraith: { width: 26, height: 38, health: 28, damage: 6, speed: 1.55, color: '#8467b5' },
     brute: { width: 42, height: 44, health: 68, damage: 12, speed: 0.72, color: '#775446' },
-    boss: { width: 74, height: 78, health: 260, damage: 16, speed: 0.8, color: '#8d303e' }
+    boss: { width: 74, height: 78, health: 360, damage: 18, speed: 0.95, color: '#8d303e' }
   }[type];
   const sprite = new Sprite(x, GROUND_TOP - stats.height / 2, stats.width, stats.height);
   sprite.color = color(stats.color);
@@ -235,12 +238,50 @@ function updateEnemies(dt) {
     enemy.sprite.vel.x = abs(dx) > 42 ? Math.sign(dx) * enemy.speed : 0;
     enemy.attackClock -= dt;
 
-    if (abs(dx) < 52 && abs(hero.y - enemy.sprite.y) < 52 && enemy.attackClock <= 0 && hurtClock <= 0) {
+    const closeEnough = abs(dx) < 52 && abs(hero.y - enemy.sprite.y) < 52;
+    if (enemy.type === 'boss' && !closeEnough && enemy.attackClock <= 0) {
+      fireBossProjectile(enemy);
+      enemy.attackClock = 2.2;
+    } else if (closeEnough && enemy.attackClock <= 0 && hurtClock <= 0) {
       hurtPlayer(enemy.damage);
-      enemy.attackClock = enemy.type === 'boss' ? 1.25 : 1.5;
+      enemy.attackClock = enemy.type === 'boss' ? 1.1 : 1.5;
       hero.vel.x = dx >= 0 ? -3.2 : 3.2;
     }
+  }
+}
 
+function fireBossProjectile(enemy) {
+  const deltaX = hero.x - enemy.sprite.x;
+  const deltaY = hero.y - enemy.sprite.y;
+  const angle = atan2(deltaY, deltaX);
+  const speed = 4.2;
+  projectiles.push({
+    posX: enemy.sprite.x,
+    posY: enemy.sprite.y,
+    velocityX: cos(angle) * speed,
+    velocityY: sin(angle) * speed,
+    radius: 11,
+    damageValue: 12,
+    age: 0,
+    active: true
+  });
+  setMessage('The Hollow King hurls a blight bolt — dodge!', 1.5);
+}
+
+function updateProjectiles(dt) {
+  for (let i = projectiles.length - 1; i >= 0; i--) {
+    const bolt = projectiles[i];
+    bolt.posX += bolt.velocityX;
+    bolt.posY += bolt.velocityY;
+    bolt.age += dt;
+
+    if (dist(bolt.posX, bolt.posY, hero.x, hero.y) < bolt.radius + 20) {
+      if (hurtClock <= 0) hurtPlayer(bolt.damageValue);
+      projectiles.splice(i, 1);
+    } else if (bolt.posX < -20 || bolt.posX > GAME_WIDTH + 20 ||
+               bolt.posY < -20 || bolt.posY > GAME_HEIGHT + 20 || bolt.age > 4) {
+      projectiles.splice(i, 1);
+    }
   }
 }
 
@@ -584,6 +625,25 @@ function drawCombatEffects() {
     rect(hero.x - 19, hero.y - 27, 38, 54, 6);
     noStroke();
   }
+
+  for (const enemy of enemies) {
+    if (!enemy.alive || enemy.type !== 'boss' || enemy.attackClock > 0.4) continue;
+    noFill();
+    stroke('#ee7290');
+    strokeWeight(3);
+    ellipse(enemy.sprite.x, enemy.sprite.y, 94, 94);
+    noStroke();
+  }
+}
+
+function drawProjectiles() {
+  noStroke();
+  for (const bolt of projectiles) {
+    fill('#e95b78');
+    ellipse(bolt.posX, bolt.posY, bolt.radius * 2, bolt.radius * 2);
+    fill('#ffc279');
+    ellipse(bolt.posX, bolt.posY, bolt.radius, bolt.radius);
+  }
 }
 
 function drawEnemyHealthBars() {
@@ -630,6 +690,7 @@ function restartGame() {
   }
   resources = [];
   enemies = [];
+  projectiles = [];
   buildings = [];
   gameStatus = 'playing';
   wave = 0;
