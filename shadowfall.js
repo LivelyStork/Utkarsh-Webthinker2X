@@ -88,7 +88,7 @@ function spawnWaveResources(waveNumber) {
     ],
     3: [
       [935, 'wood', 4],
-      [485, 'wood', 2],
+      [485, 'wood', 5],
       [875, 'iron', 2]
     ]
   };
@@ -479,7 +479,7 @@ function defeatEnemy(enemy) {
   enemy.alive = false;
   enemy.sprite.remove();
   supplies.coins += enemy.type === 'boss' ? 12 : 1;
-  supplies.embers += enemy.type === 'boss' ? 3 : random() < 0.38 ? 1 : 0;
+  supplies.embers += enemy.type === 'boss' ? 3 : random() < 0.285 ? 1 : 0;
   if (enemy.type !== 'boss' && random() < 0.3) supplies.herbs += 1;
 
   if (enemy.type === 'boss') {
