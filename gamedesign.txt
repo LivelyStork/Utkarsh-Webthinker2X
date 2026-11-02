@@ -30,7 +30,7 @@ Controls: WASD and space and clicks
 
 Game inspiration: terreria/minecraft/mario  
 
-Additional requirements: 2d, not too heavy, not to many crafting recipes, some loot, some ores, strong weapon, some craftable weapons, able to build house, autoheal, enemy waves attack you, different enemies, you have health, able to die, able to win, 
+Additional requirements: 2d, not too heavy, not to many crafting recipes, some loot, some ores, strong weapon, some craftable weapons, able to build house, autoheal, enemy waves attack you, different enemies, you have health, able to die, able to win, has win and lose screen
 
 - Check the p5play documentation or source for the selected version before using its APIs 
 
