@@ -583,7 +583,7 @@ function buildHouse() {
     return;
   }
 
-  const centerX = constrain(hero.x + facing * 120, 120, GAME_WIDTH - 120);
+  const centerX = constrain(round(hero.x / 32) * 32, 96, GAME_WIDTH - 96);
   const points = [
     [-64, -112], [-32, -112], [0, -112], [32, -112], [64, -112],
     [-64, -80], [64, -80],
