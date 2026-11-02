@@ -449,20 +449,22 @@ function mousePressed() {
 
 function handleToolbarClick(x, y) {
   if (y < TOOLBAR_TOP || y > GAME_HEIGHT) return;
-  const buttonWidth = 176;
-  const gap = 8;
+  const buttonWidth = 148;
+  const gap = 6;
   const startX = 12;
   const index = floor((x - startX) / (buttonWidth + gap));
-  if (index < 0 || index > 4 || x > startX + 5 * buttonWidth + 4 * gap) return;
+  if (index < 0 || index > 5 || x > startX + 6 * buttonWidth + 5 * gap ||
+      x > startX + index * (buttonWidth + gap) + buttonWidth) return;
 
   if (index === 0) craftIronSword();
   if (index === 1) craftEmberBlade();
-  if (index === 2) brewTonic();
-  if (index === 3) {
+  if (index === 2) craftWardenBow();
+  if (index === 3) brewTonic();
+  if (index === 4) {
     buildMode = !buildMode;
     setMessage(buildMode ? 'Build mode: click nearby ground to place a wall.' : 'Build mode off.', 2);
   }
-  if (index === 4) buildHouse();
+  if (index === 5) buildHouse();
 }
 
 function handleWorldClick(x, y) {
@@ -526,6 +528,18 @@ function craftEmberBlade() {
   weapon = 'Ember blade';
   weaponDamage = 52;
   setMessage('Forged the Ember blade — a weapon fit for a king.', 3);
+}
+
+function craftWardenBow() {
+  if (supplies.wood < 5 || supplies.iron < 3) {
+    setMessage('Warden bow needs 5 wood and 3 iron.', 2.5);
+    return;
+  }
+  supplies.wood -= 5;
+  supplies.iron -= 3;
+  weapon = 'Warden bow';
+  weaponDamage = 28;
+  setMessage('Crafted the Warden bow. Face an enemy and press SPACE to shoot!', 3);
 }
 
 function brewTonic() {
@@ -663,6 +677,7 @@ function drawToolbar() {
   const labels = [
     'IRON SWORD',
     'EMBER BLADE',
+    'WARDEN BOW',
     'HEAL TONIC',
     buildMode ? 'BUILD: ON' : 'BUILD WALL',
     'BUILD SHELTER'
@@ -670,15 +685,16 @@ function drawToolbar() {
   const costs = [
     '4 wood + 3 iron',
     '3 iron + 2 ember',
+    '5 wood + 3 iron',
     '2 herbs',
     'click ground • 2 wood',
     '8 wood + 3 stone'
   ];
-  const buttonWidth = 176;
-  const gap = 8;
+  const buttonWidth = 148;
+  const gap = 6;
   for (let i = 0; i < labels.length; i++) {
     const x = 12 + i * (buttonWidth + gap);
-    fill(i === 3 && buildMode ? '#536f4d' : '#25303c');
+    fill(i === 4 && buildMode ? '#536f4d' : '#25303c');
     rect(x, TOOLBAR_TOP + 6, buttonWidth, 48, 7);
     fill('#f1e7d0');
     textAlign(CENTER, CENTER);
@@ -693,7 +709,7 @@ function drawToolbar() {
 }
 
 function drawCombatEffects() {
-  if (attackClock > 0.28 && attackClock < 0.5) {
+  if (weapon !== 'Warden bow' && attackClock > 0.28 && attackClock < 0.5) {
     stroke('#ffe49a');
     strokeWeight(4);
     line(hero.x + facing * 12, hero.y - 7, hero.x + facing * 48, hero.y - 16);
@@ -718,12 +734,26 @@ function drawCombatEffects() {
 }
 
 function drawProjectiles() {
-  noStroke();
   for (const bolt of projectiles) {
-    fill('#e95b78');
-    ellipse(bolt.posX, bolt.posY, bolt.radius * 2, bolt.radius * 2);
-    fill('#ffc279');
-    ellipse(bolt.posX, bolt.posY, bolt.radius, bolt.radius);
+    if (bolt.owner === 'player') {
+      stroke('#f1d08b');
+      strokeWeight(3);
+      line(
+        bolt.posX,
+        bolt.posY,
+        bolt.posX - bolt.velocityX * 1.5,
+        bolt.posY - bolt.velocityY * 1.5
+      );
+      noStroke();
+      fill('#fff0bc');
+      ellipse(bolt.posX, bolt.posY, 5, 5);
+    } else {
+      noStroke();
+      fill('#e95b78');
+      ellipse(bolt.posX, bolt.posY, bolt.radius * 2, bolt.radius * 2);
+      fill('#ffc279');
+      ellipse(bolt.posX, bolt.posY, bolt.radius, bolt.radius);
+    }
   }
 }
 
