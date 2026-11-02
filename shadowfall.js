@@ -687,7 +687,7 @@ function setMessage(text, seconds) {
 function drawInterface() {
   noStroke();
   fill(16, 19, 28, 232);
-  rect(0, 0, GAME_WIDTH, 92);
+  rect(0, 0, GAME_WIDTH, 112);
 
   fill('#f1e7d0');
   textAlign(LEFT, CENTER);
@@ -697,7 +697,7 @@ function drawInterface() {
   textStyle(NORMAL);
   textSize(13);
   fill('#b8c2c7');
-  text('WASD move / jump  •  SPACE attack  •  Click to gather, build or strike', 20, 54);
+  text('WASD move/jump  •  SPACE melee  •  Click gather/build/fire bow', 20, 48);
 
   drawHealthBar();
   drawSupplyLine();
@@ -707,21 +707,21 @@ function drawInterface() {
 
   if (messageClock > 0 && gameStatus === 'playing') {
     fill(16, 19, 28, 232);
-    rect(255, 96, 450, 30, 6);
+    rect(255, 116, 450, 30, 6);
     fill('#f3d9a1');
     textAlign(CENTER, CENTER);
     textSize(13);
-    text(message, GAME_WIDTH / 2, 111);
+    text(message, GAME_WIDTH / 2, 131);
   }
 }
 
 function drawHealthBar() {
-  const x = 680;
-  const y = 16;
+  const x = 700;
+  const y = 12;
   fill('#39414b');
-  rect(x, y, 220, 18, 8);
+  rect(x, y, 238, 18, 8);
   fill(playerData.health > 30 ? '#68bd74' : '#e35b58');
-  rect(x, y, 220 * playerData.health / playerData.maxHealth, 18, 8);
+  rect(x, y, 238 * playerData.health / playerData.maxHealth, 18, 8);
   fill('#fff2d6');
   textAlign(LEFT, CENTER);
   textSize(12);
@@ -732,16 +732,13 @@ function drawSupplyLine() {
   fill('#d0d5d4');
   textAlign(LEFT, CENTER);
   textSize(12);
-  text(`WOOD ${supplies.wood}   STONE ${supplies.stone}   IRON ${supplies.iron}   HERBS ${supplies.herbs}   EMBER ${supplies.embers}   COINS ${supplies.coins}`, 366, 56);
-  textAlign(RIGHT, CENTER);
+  text(`WOOD ${supplies.wood}   STONE ${supplies.stone}   IRON ${supplies.iron}   HERBS ${supplies.herbs}   EMBER ${supplies.embers}   COINS ${supplies.coins}`, 20, 70);
   fill('#f0d99c');
-  textSize(12);
-  textAlign(LEFT, CENTER);
-  text(`SWORD: ${meleeWeapon} (${meleeDamage})   BOW: ${bowOwned ? `Warden bow (${bowDamage})` : 'none'}`, 20, 76);
+  text(`SWORD: ${meleeWeapon} (${meleeDamage})   BOW: ${bowOwned ? `Warden bow (${bowDamage})` : 'none'}`, 20, 94);
   if (isPlayerSheltered()) {
     textAlign(RIGHT, CENTER);
     fill('#9cdb9e');
-    text('SHELTERED: +50% DMG • REGEN', GAME_WIDTH - 20, 76);
+    text('SHELTERED: +50% DMG • REGEN', GAME_WIDTH - 20, 94);
   }
 }
 
@@ -750,7 +747,7 @@ function drawWaveLabel() {
   textSize(14);
   fill('#f1d58d');
   const label = bossStarted ? 'HOLLOW KING' : wave === 0 ? 'NIGHTFALL INCOMING' : `WAVE ${wave} / 3`;
-  text(label, GAME_WIDTH - 22, 42);
+  text(label, GAME_WIDTH - 22, 44);
 }
 
 function drawToolbar() {
