@@ -5,7 +5,6 @@ const TOOLBAR_TOP = 520;
 
 let hero;
 let ground;
-let sideWalls = [];
 let resources = [];
 let enemies = [];
 let buildings = [];
@@ -38,12 +37,6 @@ function createWorld() {
   ground.color = color('#34443a');
   ground.stroke = color('#50664b');
   ground.strokeWeight = 2;
-
-  sideWalls = [
-    new Sprite(-12, 280, 24, 560, 'static'),
-    new Sprite(GAME_WIDTH + 12, 280, 24, 560, 'static')
-  ];
-  for (const wall of sideWalls) wall.visible = false;
 
   hero = new Sprite(105, GROUND_TOP - 28, 28, 42);
   hero.color = color('#e7c980');
@@ -155,9 +148,7 @@ function moveHero() {
     hero.vel.x *= 0.78;
   }
 
-  if ((keyIsDown(87) || keyIsDown(32) && keyIsDown(87)) && hero.colliding(ground)) {
-    hero.vel.y = -8.5;
-  }
+  if (keyIsDown(87) && hero.colliding(ground)) hero.vel.y = -8.5;
   hero.x = constrain(hero.x, 18, GAME_WIDTH - 18);
 }
 
@@ -613,7 +604,7 @@ function drawEndScreen() {
 
 function restartGame() {
   for (const sprite of allSprites.slice()) {
-    if (sprite !== ground && !sideWalls.includes(sprite)) sprite.remove();
+    if (sprite !== ground && sprite !== hero) sprite.remove();
   }
   resources = [];
   enemies = [];
