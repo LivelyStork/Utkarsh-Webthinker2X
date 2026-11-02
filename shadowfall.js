@@ -175,7 +175,7 @@ function moveHero() {
     hero.vel.x *= 0.78;
   }
 
-  if (keyIsDown(87) && hero.colliding(ground)) hero.vel.y = -8.5;
+  if (keyIsDown(87) && hero.colliding(ground)) hero.vel.y = -6;
   if (keyIsDown(83) && !hero.colliding(ground)) hero.vel.y = max(hero.vel.y, 5);
   hero.x = constrain(hero.x, 18, GAME_WIDTH - 18);
 }
