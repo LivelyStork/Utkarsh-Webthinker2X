@@ -708,7 +708,7 @@ function drawToolbar() {
 }
 
 function drawCombatEffects() {
-  if (weapon !== 'Warden bow' && attackClock > 0.28 && attackClock < 0.5) {
+  if (attackClock > 0.28 && attackClock < 0.5) {
     stroke('#ffe49a');
     strokeWeight(4);
     line(hero.x + facing * 12, hero.y - 7, hero.x + facing * 48, hero.y - 16);
