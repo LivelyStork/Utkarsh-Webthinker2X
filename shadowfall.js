@@ -358,9 +358,9 @@ function updateHealing(dt) {
 }
 
 function attack() {
-  if (gameStatus !== 'playing') return;
+  if (gameStatus !== 'playing' || attackClock > 0) return;
 
-  attackClock = meleeWeapon === 'Ember blade' ? 0.42 : 0.5;
+  attackClock = 0.5;
   const target = closestEnemyInRange();
   if (!target) {
     setMessage('Swing closer to a blighted creature.', 1.2);
