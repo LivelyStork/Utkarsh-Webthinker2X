@@ -46,15 +46,7 @@ function createWorld() {
   hero.friction = 0.12;
   hero.bounciness = 0;
 
-  addResource(190, 'wood', 4);
-  addResource(315, 'iron', 2);
-  addResource(425, 'herb', 1);
-  addResource(545, 'stone', 2);
-  addResource(665, 'wood', 4);
-  addResource(775, 'iron', 2);
-  addResource(875, 'herb', 1);
-  addResource(935, 'wood', 4);
-  addResource(50, 'stone', 2);
+  createResourceNodes();
 }
 
 function resetGameData() {
@@ -74,6 +66,19 @@ function addResource(x, type, amount) {
   node.stroke = color('#d6d1bc');
   node.strokeWeight = 1;
   resources.push({ sprite: node, type, amount, available: true });
+}
+
+function createResourceNodes() {
+  addResource(190, 'wood', 4);
+  addResource(315, 'iron', 2);
+  addResource(425, 'herb', 1);
+  addResource(485, 'iron', 2);
+  addResource(545, 'stone', 2);
+  addResource(665, 'wood', 4);
+  addResource(775, 'iron', 2);
+  addResource(875, 'herb', 1);
+  addResource(935, 'wood', 4);
+  addResource(50, 'stone', 2);
 }
 
 function draw() {
@@ -359,23 +364,23 @@ function gatherResource(resource) {
 }
 
 function craftIronSword() {
-  if (supplies.wood < 4 || supplies.iron < 4) {
-    setMessage('Iron sword needs 4 wood and 4 iron.', 2.5);
+  if (supplies.wood < 4 || supplies.iron < 3) {
+    setMessage('Iron sword needs 4 wood and 3 iron.', 2.5);
     return;
   }
   supplies.wood -= 4;
-  supplies.iron -= 4;
+  supplies.iron -= 3;
   weapon = 'Iron sword';
   weaponDamage = 34;
   setMessage('Forged an Iron sword! Your attacks are stronger.', 3);
 }
 
 function craftEmberBlade() {
-  if (supplies.iron < 4 || supplies.embers < 2) {
-    setMessage('Ember blade needs 4 iron and 2 ember shards.', 2.5);
+  if (supplies.iron < 3 || supplies.embers < 2) {
+    setMessage('Ember blade needs 3 iron and 2 ember shards.', 2.5);
     return;
   }
-  supplies.iron -= 4;
+  supplies.iron -= 3;
   supplies.embers -= 2;
   weapon = 'Ember blade';
   weaponDamage = 52;
@@ -522,8 +527,8 @@ function drawToolbar() {
     'BUILD SHELTER'
   ];
   const costs = [
-    '4 wood + 4 iron',
-    '4 iron + 2 ember',
+    '4 wood + 3 iron',
+    '3 iron + 2 ember',
     '2 herbs',
     'click ground • 2 wood',
     '8 wood + 3 stone'
@@ -623,18 +628,6 @@ function restartGame() {
   hero.y = GROUND_TOP - 28;
   hero.vel.x = 0;
   hero.vel.y = 0;
-  createResourcesAgain();
+  createResourceNodes();
   setMessage('The blight is spreading. Gather supplies and hold the line.', 5);
-}
-
-function createResourcesAgain() {
-  addResource(190, 'wood', 4);
-  addResource(315, 'iron', 2);
-  addResource(425, 'herb', 1);
-  addResource(545, 'stone', 2);
-  addResource(665, 'wood', 4);
-  addResource(775, 'iron', 2);
-  addResource(875, 'herb', 1);
-  addResource(935, 'wood', 4);
-  addResource(50, 'stone', 2);
 }
